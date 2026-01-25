@@ -1,0 +1,6 @@
+# Default MacOS stuff
+*.DS_Store
+
+# Oracle Stuff
+*.dmd
+/er_diagram
