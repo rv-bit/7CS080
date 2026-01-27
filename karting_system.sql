@@ -20,10 +20,10 @@ CREATE TABLE booking_items
 ;
 
 ALTER TABLE booking_items 
-    ADD CONSTRAINT booking_items_PK PRIMARY KEY ( id ) ;
+    ADD CONSTRAINT booking_items_PK PRIMARY KEY ( id );
 
 ALTER TABLE booking_items 
-    ADD CONSTRAINT booking_items__UN UNIQUE ( tracks_id,time_slots_id,booking_date ) ;
+    ADD CONSTRAINT booking_items__UN UNIQUE ( tracks_id,time_slots_id,booking_date );
 
 CREATE TABLE bookings 
     ( 
@@ -38,7 +38,7 @@ ALTER TABLE bookings
     ADD CONSTRAINT booking_status_CK CHECK (UPPER(status) IN ('PENDING','CONFIRMED','CANCELLED','COMPLETED'))
 ;
 ALTER TABLE bookings 
-    ADD CONSTRAINT bookings_PK PRIMARY KEY ( id ) ;
+    ADD CONSTRAINT bookings_PK PRIMARY KEY ( id );
 
 CREATE TABLE customers 
     ( 
@@ -52,7 +52,7 @@ CREATE TABLE customers
 ;
 
 ALTER TABLE customers 
-    ADD CONSTRAINT customers_PK PRIMARY KEY ( id ) ;
+    ADD CONSTRAINT customers_PK PRIMARY KEY ( id );
 
 CREATE TABLE time_slots 
     ( 
@@ -64,7 +64,7 @@ CREATE TABLE time_slots
 ;
 
 ALTER TABLE time_slots 
-    ADD CONSTRAINT time_slots_PK PRIMARY KEY ( id ) ;
+    ADD CONSTRAINT time_slots_PK PRIMARY KEY ( id );
 
 CREATE TABLE track_blocks 
     ( 
@@ -78,10 +78,10 @@ CREATE TABLE track_blocks
 ;
 
 ALTER TABLE track_blocks 
-    ADD CONSTRAINT track_blocks_PK PRIMARY KEY ( id ) ;
+    ADD CONSTRAINT track_blocks_PK PRIMARY KEY ( id );
 
 ALTER TABLE track_blocks 
-    ADD CONSTRAINT track_blocks__UN UNIQUE ( tracks_id,time_slots_id,block_date ) ;
+    ADD CONSTRAINT track_blocks__UN UNIQUE ( tracks_id,time_slots_id,block_date );
 
 CREATE TABLE track_schedules 
     ( 
@@ -94,10 +94,10 @@ CREATE TABLE track_schedules
 ;
 
 ALTER TABLE track_schedules 
-    ADD CONSTRAINT track_schedules_PK PRIMARY KEY ( id ) ;
+    ADD CONSTRAINT track_schedules_PK PRIMARY KEY ( id );
 
 ALTER TABLE track_schedules 
-    ADD CONSTRAINT track_schedules__UN UNIQUE ( tracks_id,day_of_week,time_slots_id ) ;
+    ADD CONSTRAINT track_schedules__UN UNIQUE ( tracks_id,day_of_week,time_slots_id );
 
 CREATE TABLE tracks 
     ( 
@@ -110,39 +110,31 @@ CREATE TABLE tracks
 ;
 
 ALTER TABLE tracks 
-    ADD CONSTRAINT tracks_PK PRIMARY KEY ( id ) ;
+    ADD CONSTRAINT tracks_PK PRIMARY KEY ( id );
 
 ALTER TABLE booking_items 
-    ADD CONSTRAINT booking_items_bookings_FK FOREIGN KEY ( bookings_id) REFERENCES bookings (id) ON DELETE CASCADE 
-;
+    ADD CONSTRAINT booking_items_bookings_FK FOREIGN KEY ( bookings_id) REFERENCES bookings (id) ON DELETE CASCADE;
 
 ALTER TABLE booking_items 
-    ADD CONSTRAINT booking_items_time_slots_FK FOREIGN KEY ( time_slots_id ) REFERENCES time_slots ( id ) 
-;
+    ADD CONSTRAINT booking_items_time_slots_FK FOREIGN KEY ( time_slots_id ) REFERENCES time_slots ( id );
 
 ALTER TABLE booking_items 
-    ADD CONSTRAINT booking_items_tracks_FK FOREIGN KEY ( tracks_id ) REFERENCES tracks ( id ) 
-;
+    ADD CONSTRAINT booking_items_tracks_FK FOREIGN KEY ( tracks_id ) REFERENCES tracks ( id );
 
 ALTER TABLE bookings 
-    ADD CONSTRAINT bookings_customers_FK FOREIGN KEY ( customers_id ) REFERENCES customers ( id ) ON DELETE CASCADE 
-;
+    ADD CONSTRAINT bookings_customers_FK FOREIGN KEY ( customers_id ) REFERENCES customers ( id ) ON DELETE CASCADE;
 
 ALTER TABLE track_blocks 
-    ADD CONSTRAINT track_blocks_time_slots_FK FOREIGN KEY ( time_slots_id ) REFERENCES time_slots ( id ) 
-;
+    ADD CONSTRAINT track_blocks_time_slots_FK FOREIGN KEY ( time_slots_id ) REFERENCES time_slots ( id );
 
 ALTER TABLE track_blocks 
-    ADD CONSTRAINT track_blocks_tracks_FK FOREIGN KEY ( tracks_id ) REFERENCES tracks ( id ) 
-;
+    ADD CONSTRAINT track_blocks_tracks_FK FOREIGN KEY ( tracks_id ) REFERENCES tracks ( id ) ON DELETE CASCADE;
 
 ALTER TABLE track_schedules 
-    ADD CONSTRAINT track_schedules_time_slots_FK FOREIGN KEY ( time_slots_id ) REFERENCES time_slots ( id ) ON DELETE CASCADE 
-;
+    ADD CONSTRAINT track_schedules_time_slots_FK FOREIGN KEY ( time_slots_id ) REFERENCES time_slots ( id ) ON DELETE CASCADE;
 
 ALTER TABLE track_schedules 
-    ADD CONSTRAINT track_schedules_tracks_FK FOREIGN KEY ( tracks_id ) REFERENCES tracks ( id ) 
-;
+    ADD CONSTRAINT track_schedules_tracks_FK FOREIGN KEY ( tracks_id ) REFERENCES tracks ( id ) ON DELETE CASCADE;
 
 
 
