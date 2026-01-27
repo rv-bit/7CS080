@@ -11,11 +11,11 @@
 
 CREATE TABLE booking_items 
     ( 
-     id            INTEGER  NOT NULL , 
-     bookings_id   INTEGER  NOT NULL , 
-     tracks_id     INTEGER  NOT NULL , 
-     time_slots_id INTEGER  NOT NULL , 
-     booking_date  DATE  NOT NULL 
+        id INTEGER  NOT NULL,
+        bookings_id INTEGER NOT NULL,
+        tracks_id INTEGER NOT NULL,
+        time_slots_id INTEGER NOT NULL,
+        booking_date DATE NOT NULL 
     ) 
 ;
 
@@ -23,35 +23,31 @@ ALTER TABLE booking_items
     ADD CONSTRAINT booking_items_PK PRIMARY KEY ( id ) ;
 
 ALTER TABLE booking_items 
-    ADD CONSTRAINT booking_items__UN UNIQUE ( tracks_id , time_slots_id , booking_date ) ;
+    ADD CONSTRAINT booking_items__UN UNIQUE ( tracks_id,time_slots_id,booking_date ) ;
 
 CREATE TABLE bookings 
     ( 
-     id           INTEGER  NOT NULL , 
-     status       VARCHAR2 (20 CHAR)  NOT NULL , 
-     created_at   DATE  NOT NULL , 
-     customers_id INTEGER  NOT NULL 
+        id INTEGER NOT NULL,
+        status VARCHAR2 (20 CHAR) NOT NULL,
+        created_at DATE NOT NULL,
+        customers_id INTEGER NOT NULL 
     ) 
 ;
 
 ALTER TABLE bookings 
-    ADD CONSTRAINT booking_status_CK 
-    CHECK (UPPER(status) IN (
-  'PENDING','CONFIRMED','CANCELLED','COMPLETED'
-)
-)
+    ADD CONSTRAINT booking_status_CK CHECK (UPPER(status) IN ('PENDING','CONFIRMED','CANCELLED','COMPLETED'))
 ;
 ALTER TABLE bookings 
     ADD CONSTRAINT bookings_PK PRIMARY KEY ( id ) ;
 
 CREATE TABLE customers 
     ( 
-     id         INTEGER  NOT NULL , 
-     first_name VARCHAR2 (50 CHAR)  NOT NULL , 
-     last_name  VARCHAR2 (50 CHAR)  NOT NULL , 
-     email      VARCHAR2 (50 CHAR)  NOT NULL , 
-     updated_at DATE  NOT NULL , 
-     created_at DATE  NOT NULL 
+        id INTEGER NOT NULL,
+        first_name VARCHAR2 (50 CHAR) NOT NULL,
+        last_name VARCHAR2 (50 CHAR) NOT NULL,
+        email VARCHAR2 (50 CHAR) NOT NULL,
+        updated_at DATE NOT NULL,
+        created_at DATE NOT NULL 
     ) 
 ;
 
@@ -60,10 +56,10 @@ ALTER TABLE customers
 
 CREATE TABLE time_slots 
     ( 
-     id                  INTEGER  NOT NULL , 
-     start_time          DATE  NOT NULL , 
-     end_time            DATE  NOT NULL , 
-     duration_in_minutes INTEGER  NOT NULL 
+        id INTEGER NOT NULL,
+        start_time DATE NOT NULL,
+        end_time DATE NOT NULL,
+        duration_in_minutes INTEGER  OT NULL 
     ) 
 ;
 
@@ -72,12 +68,12 @@ ALTER TABLE time_slots
 
 CREATE TABLE track_blocks 
     ( 
-     id            INTEGER  NOT NULL , 
-     block_date    DATE  NOT NULL , 
-     reason        VARCHAR2 (150 CHAR)  NOT NULL , 
-     created_at    DATE  NOT NULL , 
-     tracks_id     INTEGER  NOT NULL , 
-     time_slots_id INTEGER  NOT NULL 
+        id INTEGER NOT NULL,
+        block_date DATE NOT NULL,
+        reason VARCHAR2 (150 CHAR) NOT NULL,
+        created_at DATE NOT NULL,
+        tracks_id INTEGER NOT NULL,
+        time_slots_id INTEGER NOT NULL 
     ) 
 ;
 
@@ -85,15 +81,15 @@ ALTER TABLE track_blocks
     ADD CONSTRAINT track_blocks_PK PRIMARY KEY ( id ) ;
 
 ALTER TABLE track_blocks 
-    ADD CONSTRAINT track_blocks__UN UNIQUE ( tracks_id , time_slots_id , block_date ) ;
+    ADD CONSTRAINT track_blocks__UN UNIQUE ( tracks_id,time_slots_id,block_date ) ;
 
 CREATE TABLE track_schedules 
     ( 
-     id            INTEGER  NOT NULL , 
-     day_of_week   SMALLINT  NOT NULL , 
-     is_open       NUMBER  NOT NULL , 
-     time_slots_id INTEGER  NOT NULL , 
-     tracks_id     INTEGER  NOT NULL 
+        id INTEGER NOT NULL,
+        day_of_week SMALLINT NOT NULL,
+        is_open NUMBER NOT NULL,
+        time_slots_id INTEGER NOT NULL,
+        tracks_id INTEGER NOT NULL 
     ) 
 ;
 
@@ -101,15 +97,15 @@ ALTER TABLE track_schedules
     ADD CONSTRAINT track_schedules_PK PRIMARY KEY ( id ) ;
 
 ALTER TABLE track_schedules 
-    ADD CONSTRAINT track_schedules__UN UNIQUE ( tracks_id , day_of_week , time_slots_id ) ;
+    ADD CONSTRAINT track_schedules__UN UNIQUE ( tracks_id,day_of_week,time_slots_id ) ;
 
 CREATE TABLE tracks 
     ( 
-     id         INTEGER  NOT NULL , 
-     name       VARCHAR2 (50 CHAR)  NOT NULL , 
-     is_active  NUMBER  NOT NULL , 
-     updated_at DATE  NOT NULL , 
-     created_at DATE  NOT NULL 
+        id INTEGER NOT NULL,
+        name VARCHAR2 (50 CHAR) NOT NULL,
+        is_active NUMBER NOT NULL,
+        updated_at DATE NOT NULL,
+        created_at DATE NOT NULL 
     ) 
 ;
 
@@ -117,94 +113,35 @@ ALTER TABLE tracks
     ADD CONSTRAINT tracks_PK PRIMARY KEY ( id ) ;
 
 ALTER TABLE booking_items 
-    ADD CONSTRAINT booking_items_bookings_FK FOREIGN KEY 
-    ( 
-     bookings_id
-    ) 
-    REFERENCES bookings 
-    ( 
-     id
-    ) 
-    ON DELETE CASCADE 
+    ADD CONSTRAINT booking_items_bookings_FK FOREIGN KEY ( bookings_id) REFERENCES bookings (id) ON DELETE CASCADE 
 ;
 
 ALTER TABLE booking_items 
-    ADD CONSTRAINT booking_items_time_slots_FK FOREIGN KEY 
-    ( 
-     time_slots_id
-    ) 
-    REFERENCES time_slots 
-    ( 
-     id
-    ) 
+    ADD CONSTRAINT booking_items_time_slots_FK FOREIGN KEY ( time_slots_id ) REFERENCES time_slots ( id ) 
 ;
 
 ALTER TABLE booking_items 
-    ADD CONSTRAINT booking_items_tracks_FK FOREIGN KEY 
-    ( 
-     tracks_id
-    ) 
-    REFERENCES tracks 
-    ( 
-     id
-    ) 
+    ADD CONSTRAINT booking_items_tracks_FK FOREIGN KEY ( tracks_id ) REFERENCES tracks ( id ) 
 ;
 
 ALTER TABLE bookings 
-    ADD CONSTRAINT bookings_customers_FK FOREIGN KEY 
-    ( 
-     customers_id
-    ) 
-    REFERENCES customers 
-    ( 
-     id
-    ) 
-    ON DELETE CASCADE 
+    ADD CONSTRAINT bookings_customers_FK FOREIGN KEY ( customers_id ) REFERENCES customers ( id ) ON DELETE CASCADE 
 ;
 
 ALTER TABLE track_blocks 
-    ADD CONSTRAINT track_blocks_time_slots_FK FOREIGN KEY 
-    ( 
-     time_slots_id
-    ) 
-    REFERENCES time_slots 
-    ( 
-     id
-    ) 
+    ADD CONSTRAINT track_blocks_time_slots_FK FOREIGN KEY ( time_slots_id ) REFERENCES time_slots ( id ) 
 ;
 
 ALTER TABLE track_blocks 
-    ADD CONSTRAINT track_blocks_tracks_FK FOREIGN KEY 
-    ( 
-     tracks_id
-    ) 
-    REFERENCES tracks 
-    ( 
-     id
-    ) 
+    ADD CONSTRAINT track_blocks_tracks_FK FOREIGN KEY ( tracks_id ) REFERENCES tracks ( id ) 
 ;
 
 ALTER TABLE track_schedules 
-    ADD CONSTRAINT track_schedules_time_slots_FK FOREIGN KEY 
-    ( 
-     time_slots_id
-    ) 
-    REFERENCES time_slots 
-    ( 
-     id
-    ) 
-    ON DELETE CASCADE 
+    ADD CONSTRAINT track_schedules_time_slots_FK FOREIGN KEY ( time_slots_id ) REFERENCES time_slots ( id ) ON DELETE CASCADE 
 ;
 
 ALTER TABLE track_schedules 
-    ADD CONSTRAINT track_schedules_tracks_FK FOREIGN KEY 
-    ( 
-     tracks_id
-    ) 
-    REFERENCES tracks 
-    ( 
-     id
-    ) 
+    ADD CONSTRAINT track_schedules_tracks_FK FOREIGN KEY ( tracks_id ) REFERENCES tracks ( id ) 
 ;
 
 
