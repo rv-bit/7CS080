@@ -2,8 +2,8 @@
 *.DS_Store
 
 # Oracle Stuff
-*.dmd
-/er_diagram
+# *.dmd
+# /er_diagram
 
 # Others
 **/*.localz
