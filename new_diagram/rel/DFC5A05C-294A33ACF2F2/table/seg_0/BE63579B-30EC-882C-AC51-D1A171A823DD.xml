@@ -1,0 +1,132 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BE63579B-30EC-882C-AC51-D1A171A823DD" name="track_schedules">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="30DB76EC-D658-1B87-BD3E-4BDC358C11D2">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>30675AA1-5216-3E74-189A-BE7EC0AEA416</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="day_of_week" id="1EFB2DF5-5878-79FF-C85C-1EA6FCB5AD58">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>0</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<domain>3A847004-8589-F134-A25F-33250E85F5D1</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>7</endValue>
+</rangeDef>
+</listOfRanges>
+</Column>
+<Column name="is_open" id="2A579B81-B98E-B9CD-195B-623FBB0F37E5">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>FF5BF2A3-094B-29E1-18AE-F351B6C96698</domain>
+<listOfValues>
+<valueDef value="0" description=""/>
+<valueDef value="1" description=""/>
+</listOfValues>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="time_slots_id" id="028B426A-9CEE-0813-E380-3C6A4E45D149">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>30675AA1-5216-3E74-189A-BE7EC0AEA416</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E04403F7-454B-03E7-867E-BC3AFF7727FE" referredColumn="2AD8E198-C938-4B28-3529-6619D0994AC9"/>
+</associations>
+</Column>
+<Column name="tracks_id" id="88BA8C05-AA9A-6999-B3DD-4EF3AE7E3F20">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>30675AA1-5216-3E74-189A-BE7EC0AEA416</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="95575306-2535-BEC3-7C79-5E2852E69615" referredColumn="EC08D7BC-2E1D-4B54-7F6C-640300C95422"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="052507C5-FDC6-AF39-99ED-E6D6D319D479" name="track_schedules_PK">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="30DB76EC-D658-1B87-BD3E-4BDC358C11D2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="80A01B47-7C93-4F5C-030B-C370BE6E698B" name="track_schedules_UN">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="88BA8C05-AA9A-6999-B3DD-4EF3AE7E3F20"/>
+<colUsage columnID="1EFB2DF5-5878-79FF-C85C-1EA6FCB5AD58"/>
+<colUsage columnID="028B426A-9CEE-0813-E380-3C6A4E45D149"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2E82F048-86AB-E715-A083-6E32FA00FF75" name="track_schedules_time_slots_FK">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="028B426A-9CEE-0813-E380-3C6A4E45D149"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="84F62FFA-A71E-61D7-F82F-D962E1A1CE84" name="track_schedules_tracks_FK">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="88BA8C05-AA9A-6999-B3DD-4EF3AE7E3F20"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

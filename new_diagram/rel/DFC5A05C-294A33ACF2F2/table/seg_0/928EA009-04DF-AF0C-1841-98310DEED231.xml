@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="928EA009-04DF-AF0C-1841-98310DEED231" name="tracks">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="EC08D7BC-2E1D-4B54-7F6C-640300C95422">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>30675AA1-5216-3E74-189A-BE7EC0AEA416</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="EEB51B64-2918-E41E-5275-83E7578ECCA2">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>61B7B8C9-5FC0-3040-4EAB-A61658A95043</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="max_karts" id="179BFDB8-1699-6286-DE9D-90099539C094">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>30675AA1-5216-3E74-189A-BE7EC0AEA416</domain>
+<checkConstraint>
+<implementationDef dbType="Oracle Database 21c" definition="max_karts &gt; 0"/>
+</checkConstraint>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="is_active" id="37CB3045-1B4D-25CD-66AF-1B954B3F27FC">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>FF5BF2A3-094B-29E1-18AE-F351B6C96698</domain>
+<listOfValues>
+<valueDef value="0" description=""/>
+<valueDef value="1" description=""/>
+</listOfValues>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="updated_at" id="3CD7EC0C-DFD3-5AA2-466A-EFB4C3C92654">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>7899714E-E44E-FDD5-094A-329D593905C4</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="created_at" id="1BFDD38C-60DE-200E-C00C-7C15625C674E">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>7899714E-E44E-FDD5-094A-329D593905C4</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2ABBB361-3F7E-8201-C672-FA96DB6EE59D" name="tracks_PK">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EC08D7BC-2E1D-4B54-7F6C-640300C95422"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

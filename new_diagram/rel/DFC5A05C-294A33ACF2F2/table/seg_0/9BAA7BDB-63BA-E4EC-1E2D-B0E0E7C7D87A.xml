@@ -1,0 +1,131 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9BAA7BDB-63BA-E4EC-1E2D-B0E0E7C7D87A" name="track_blocks">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="33B01847-894D-01AB-7B01-8F171F1B5769">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>30675AA1-5216-3E74-189A-BE7EC0AEA416</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="block_date" id="BF5D1BEF-52ED-8EBA-CC85-EFA91462DE76">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>7899714E-E44E-FDD5-094A-329D593905C4</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="reason" id="A579C149-E9C8-9AE4-77BA-085715C8B635">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>5FF94CDE-4CFC-882C-6335-8AA3A20E65FA</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="created_at" id="DDC6F006-B5ED-C16C-E6CC-717304C40BEC">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>7899714E-E44E-FDD5-094A-329D593905C4</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tracks_id" id="209E95BB-F028-71E4-7AE8-A254B8D127B4">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>30675AA1-5216-3E74-189A-BE7EC0AEA416</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6A703155-F301-A221-D937-81ED87A03175" referredColumn="EC08D7BC-2E1D-4B54-7F6C-640300C95422"/>
+</associations>
+</Column>
+<Column name="time_slots_id" id="59EFDF9A-CDE5-F570-463E-4A0B78855E4C">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>30675AA1-5216-3E74-189A-BE7EC0AEA416</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BEB8A8C0-AF0C-E855-3D25-6B944CD744C9" referredColumn="2AD8E198-C938-4B28-3529-6619D0994AC9"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D9B21325-321E-7682-F5F3-C3974D3DE014" name="track_blocks_PK">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="33B01847-894D-01AB-7B01-8F171F1B5769"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6D78C896-6E0E-8F45-B278-88E6EE5CE9EA" name="track_blocks_UN">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="209E95BB-F028-71E4-7AE8-A254B8D127B4"/>
+<colUsage columnID="59EFDF9A-CDE5-F570-463E-4A0B78855E4C"/>
+<colUsage columnID="BF5D1BEF-52ED-8EBA-CC85-EFA91462DE76"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E45A007E-E019-F732-65CB-A39EFF7C20A2" name="track_blocks_tracks_FK">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="209E95BB-F028-71E4-7AE8-A254B8D127B4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6C33B2CA-54E5-0F55-E4F8-CFD3D8A205C4" name="track_blocks_time_slots_FK">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="59EFDF9A-CDE5-F570-463E-4A0B78855E4C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

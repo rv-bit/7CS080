@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E04403F7-454B-03E7-867E-BC3AFF7727FE" containerWithKeyObject="BE63579B-30EC-882C-AC51-D1A171A823DD" localFKIndex="2E82F048-86AB-E715-A083-6E32FA00FF75" name="track_schedules_time_slots_FK">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<referredTableLongName>time_slots</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>313B2BC5-C5CA-1771-B39A-4F2F9CDC65B9</referredTableID>
+<keyObject>BA8F5948-94EB-0C21-9D92-D737F8BD9194</keyObject>
+<referredKeyID>BA8F5948-94EB-0C21-9D92-D737F8BD9194</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

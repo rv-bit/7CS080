@@ -1,0 +1,236 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableView class="oracle.dbtools.crest.model.design.relational.TableView" directorySegmentName="seg_0" id="4640C92E-2516-87D4-6C06-27E177DDDA65" name="v_track_availability_view">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<ordsAlias>v_track_availability</ordsAlias>
+<userDefined>true</userDefined>
+<userDefinedSQL><![CDATA[SELECT 
+    t.id AS track_id,
+    t.name AS track_name,
+    t.max_karts,
+    bp.booking_date,
+    bp.time_slots_id,
+    ts.start_time,
+    ts.end_time,
+    NVL(SUM(CASE WHEN b.status IN ('CONFIRMED', 'PENDING', 'RESERVED') 
+                 THEN bp.quantity ELSE 0 END), 0) AS booked_karts,
+    t.max_karts - NVL(SUM(CASE WHEN b.status IN ('CONFIRMED', 'PENDING', 'RESERVED') 
+                               THEN bp.quantity ELSE 0 END), 0) AS available_karts
+FROM tracks t
+CROSS JOIN time_slots ts
+CROSS JOIN (
+    -- Generate dates for next 90 days
+    SELECT TRUNC(SYSDATE) + LEVEL - 1 AS booking_date
+    FROM DUAL
+    CONNECT BY LEVEL <= 90
+) dates
+LEFT JOIN booked_places bp 
+    ON t.id = bp.tracks_id 
+    AND ts.id = bp.time_slots_id 
+    AND dates.booking_date = bp.booking_date
+LEFT JOIN bookings b 
+    ON bp.bookings_id = b.id
+WHERE t.is_active = 1
+GROUP BY t.id, t.name, t.max_karts, bp.booking_date, bp.time_slots_id, ts.start_time, ts.end_time]]></userDefinedSQL>
+<parsed>true</parsed>
+<viewElements>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="track_id" id="8C5AD21F-D57D-4ED6-2F40-FA0FC287967D">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<alias>track_id</alias>
+<dataType>INTEGER</dataType>
+<headerAlias>track_id</headerAlias>
+<reference>false</reference>
+<referencedColumn>EC08D7BC-2E1D-4B54-7F6C-640300C95422</referencedColumn>
+<table>928EA009-04DF-AF0C-1841-98310DEED231</table>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="track_name" id="5EEBE211-5E89-9170-4481-B3C96155C844">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<alias>track_name</alias>
+<dataType>VARCHAR2 (50 CHAR)</dataType>
+<headerAlias>track_name</headerAlias>
+<reference>false</reference>
+<referencedColumn>EEB51B64-2918-E41E-5275-83E7578ECCA2</referencedColumn>
+<table>928EA009-04DF-AF0C-1841-98310DEED231</table>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="max_karts" id="49BD393E-C169-A9CB-E98A-247E0DB69FD1">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>INTEGER</dataType>
+<headerAlias>max_karts</headerAlias>
+<reference>false</reference>
+<referencedColumn>179BFDB8-1699-6286-DE9D-90099539C094</referencedColumn>
+<table>928EA009-04DF-AF0C-1841-98310DEED231</table>
+<tableAlias>t</tableAlias>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="booking_date" id="F446CE59-0A0E-FF9A-7849-3271D07C3CFD">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>DATE</dataType>
+<headerAlias>booking_date</headerAlias>
+<reference>false</reference>
+<referencedColumn>C6454E49-7317-A58E-C1E5-1E37F5B83BEC</referencedColumn>
+<tableAlias>bp</tableAlias>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="time_slots_id" id="E1DA53E4-608E-B83C-DC63-DA9CEAA5DDE3">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>INTEGER</dataType>
+<headerAlias>time_slots_id</headerAlias>
+<reference>false</reference>
+<referencedColumn>AC62DDCF-FE19-24EE-F53E-8B78E9168238</referencedColumn>
+<tableAlias>bp</tableAlias>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="start_time" id="9A85A885-CD87-E4FD-9080-A1470AE1D4A1">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>VARCHAR2 (5 CHAR)</dataType>
+<headerAlias>start_time</headerAlias>
+<reference>false</reference>
+<referencedColumn>A6E01885-B1F3-EE2B-DCD7-133C4BFDB745</referencedColumn>
+<table>313B2BC5-C5CA-1771-B39A-4F2F9CDC65B9</table>
+<tableAlias>ts</tableAlias>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="end_time" id="828A8823-DDD3-AAB4-83AE-5998C7915C69">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<dataType>VARCHAR2 (5 CHAR)</dataType>
+<headerAlias>end_time</headerAlias>
+<reference>false</reference>
+<referencedColumn>AD71A7E1-5F81-7AD8-1025-0FE4EB581820</referencedColumn>
+<table>313B2BC5-C5CA-1771-B39A-4F2F9CDC65B9</table>
+<tableAlias>ts</tableAlias>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="booked_karts" id="5B9DF836-0DBB-3266-BBD7-BADF11AE5A36">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<alias>booked_karts</alias>
+<dataType>UNKNOWN</dataType>
+<headerAlias>booked_karts</headerAlias>
+<expression>NVL(SUM(CASEWHENb.statusIN(&apos;CONFIRMED&apos;,&apos;PENDING&apos;,&apos;RESERVED&apos;)THENbp.quantityELSE0END),0)</expression>
+<reference>false</reference>
+</viewElement>
+<viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="available_karts" id="499C1BB7-A08A-AB75-27E6-4167CD1A6F35">
+<sourceDDLFile>init_views.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<alias>available_karts</alias>
+<dataType>UNKNOWN</dataType>
+<headerAlias>available_karts</headerAlias>
+<expression>t.max_karts-NVL(SUM(CASEWHENb.statusIN(&apos;CONFIRMED&apos;,&apos;PENDING&apos;,&apos;RESERVED&apos;)THENbp.quantityELSE0END),0)</expression>
+<reference>false</reference>
+</viewElement>
+</viewElements>
+<usedObjects>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="928EA009-04DF-AF0C-1841-98310DEED231">
+<container>true</container>
+<tableName>tracks</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="313B2BC5-C5CA-1771-B39A-4F2F9CDC65B9">
+<container>true</container>
+<tableName>time_slots</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="25CCBBB5-B6E5-CB57-A595-DE0DC16DED06">
+<container>true</container>
+<tableName>booked_places</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="A0F48B5B-4097-DC32-D8F7-D49C48DE7224">
+<container>true</container>
+<tableName>bookings</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="179BFDB8-1699-6286-DE9D-90099539C094">
+<columnName>max_karts</columnName>
+<tableName>tracks</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="C6454E49-7317-A58E-C1E5-1E37F5B83BEC">
+<columnName>booking_date</columnName>
+<tableName>booked_places</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="AC62DDCF-FE19-24EE-F53E-8B78E9168238">
+<columnName>time_slots_id</columnName>
+<tableName>booked_places</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="A6E01885-B1F3-EE2B-DCD7-133C4BFDB745">
+<columnName>start_time</columnName>
+<tableName>time_slots</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="AD71A7E1-5F81-7AD8-1025-0FE4EB581820">
+<columnName>end_time</columnName>
+<tableName>time_slots</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="060A563C-5391-D7C1-EEFF-20026DA26CD7">
+<columnName>tracks_id</columnName>
+<tableName>booked_places</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="1115C5EA-A1E0-1E39-B06F-7D2A4DF53A7C">
+<columnName>id</columnName>
+<tableName>bookings</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="37CB3045-1B4D-25CD-66AF-1B954B3F27FC">
+<columnName>is_active</columnName>
+<tableName>tracks</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="EC08D7BC-2E1D-4B54-7F6C-640300C95422">
+<columnName>id</columnName>
+<tableName>tracks</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="6112D459-95A2-32EA-AA9B-6101430F2566">
+<columnName>bookings_id</columnName>
+<tableName>booked_places</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="EEB51B64-2918-E41E-5275-83E7578ECCA2">
+<columnName>name</columnName>
+<tableName>tracks</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="5DA776DC-E15F-2187-5E2B-A7BA1EFE2A2C">
+<columnName>status</columnName>
+<tableName>bookings</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="F6CEDEB0-36E2-4E83-2458-07AA20D21DC0">
+<columnName>quantity</columnName>
+<tableName>booked_places</tableName>
+</UsedObject>
+<UsedObject class="oracle.dbtools.crest.swingui.editor.viewbuilder.SQLNameHelper" id="2AD8E198-C938-4B28-3529-6619D0994AC9">
+<columnName>id</columnName>
+<tableName>time_slots</tableName>
+</UsedObject>
+</usedObjects>
+</TableView>
