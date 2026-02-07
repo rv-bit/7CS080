@@ -4,3 +4,11 @@
 # Oracle Stuff
 *.dmd
 /er_diagram
+
+# Others
+**/*.localz
+**/*.local
+**/*.git
+
+# VS Code & Settings
+.vscode
