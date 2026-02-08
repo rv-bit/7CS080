@@ -36,56 +36,29 @@ DROP TABLE IF EXISTS tracks;
 
 CREATE TABLE booked_places 
     ( 
-        id INTEGER NOT NULL, 
-        bookings_id INTEGER NOT NULL, 
-        tracks_id INTEGER NOT NULL, 
-        time_slots_id INTEGER NOT NULL, 
+        id INT NOT NULL, 
+        bookings_id INT NOT NULL, 
+        tracks_id INT NOT NULL, 
+        time_slots_id INT NOT NULL, 
         booking_date DATE NOT NULL, 
-        quantity INTEGER NOT NULL 
+        quantity INT NOT NULL 
     ) 
 ;
-
-ALTER TABLE booked_places 
-    ADD 
-    CHECK (quantity > 0);
-
-CREATE INDEX idx_booked_places_availability ON booked_places 
-    ( 
-        tracks_id ASC, 
-        time_slots_id ASC, 
-        booking_date ASC 
-    ) 
-;
-
-ALTER TABLE booked_places 
-    ADD CONSTRAINT booked_places_PK PRIMARY KEY ( id );
 
 CREATE TABLE bookings 
     ( 
-        id INTEGER NOT NULL, 
+        id INT NOT NULL, 
         status VARCHAR (20) NOT NULL, 
         created_at DATE NOT NULL, 
         reserved_until DATE, 
-        customers_id INTEGER NOT NULL 
-    ) 
-;
-CREATE INDEX idx_bookings_status_reserved ON bookings 
-    ( 
-        status ASC, 
-        reserved_until ASC 
+        customers_id INT NOT NULL 
     ) 
 ;
 
-ALTER TABLE bookings 
-    ADD CONSTRAINT booking_status_CK 
-    CHECK (UPPER(status) IN ('PENDING', 'CONFIRMED', 'CANCELLED', 'COMPLETED'));
-
-ALTER TABLE bookings 
-    ADD CONSTRAINT bookings_PK PRIMARY KEY ( id );
 
 CREATE TABLE customers 
     ( 
-        id INTEGER NOT NULL, 
+        id INT NOT NULL, 
         first_name VARCHAR (50) NOT NULL, 
         last_name VARCHAR (50) NOT NULL, 
         email VARCHAR (50) NOT NULL, 
@@ -94,20 +67,83 @@ CREATE TABLE customers
     ) 
 ;
 
-ALTER TABLE customers 
-    ADD CONSTRAINT customers_PK PRIMARY KEY ( id );
+CREATE TABLE time_slots 
+    ( 
+        id INT NOT NULL, 
+        start_time VARCHAR (5) NOT NULL, 
+        end_time VARCHAR (5) NOT NULL, 
+        duration_in_minutes INT NOT NULL 
+    ) 
+;
+
+CREATE TABLE track_blocks 
+    ( 
+        id INT NOT NULL, 
+        block_date DATE NOT NULL, 
+        reason VARCHAR (150) NOT NULL, 
+        created_at DATE NOT NULL, 
+        tracks_id INT NOT NULL, 
+        time_slots_id INT NOT NULL 
+    ) 
+;
+
+CREATE TABLE track_schedules 
+    ( 
+        id INT NOT NULL, 
+        day_of_week SMALLINT NOT NULL, 
+        is_open TINYINT(1) NOT NULL, 
+        time_slots_id INT NOT NULL, 
+        tracks_id INT NOT NULL 
+    ) 
+;
+
+CREATE TABLE tracks 
+    ( 
+        id INT NOT NULL, 
+        name VARCHAR (50) NOT NULL, 
+        max_karts INT NOT NULL, 
+        is_active TINYINT(1) NOT NULL, 
+        updated_at DATE NOT NULL, 
+        created_at DATE NOT NULL 
+    ) 
+;
+
+-- Primary Keys with auto increment, to enable the utilisation of INSERT operations without handling ID, since no usage of UUIDs as no application layer
+ALTER TABLE booked_places MODIFY id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+ALTER TABLE bookings MODIFY id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+ALTER TABLE customers MODIFY id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+ALTER TABLE time_slots MODIFY id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+ALTER TABLE track_blocks MODIFY id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+ALTER TABLE track_schedules MODIFY id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+ALTER TABLE tracks MODIFY id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+
+-- Indexes
+CREATE INDEX idx_booked_places_availability ON booked_places 
+    ( 
+        tracks_id ASC, 
+        time_slots_id ASC, 
+        booking_date ASC 
+    ) 
+;
+
+CREATE INDEX idx_bookings_status_reserved ON bookings 
+    ( 
+        status ASC, 
+        reserved_until ASC 
+    ) 
+;
+
+-- Constraints
+ALTER TABLE booked_places 
+    ADD 
+    CHECK (quantity > 0);
+
+ALTER TABLE bookings 
+    ADD CONSTRAINT booking_status_CK 
+    CHECK (UPPER(status) IN ('PENDING', 'CONFIRMED', 'CANCELLED', 'COMPLETED'));
 
 ALTER TABLE customers 
     ADD CONSTRAINT idx_customer_email UNIQUE ( email );
-
-CREATE TABLE time_slots 
-    ( 
-        id INTEGER NOT NULL, 
-        start_time VARCHAR (5) NOT NULL, 
-        end_time VARCHAR (5) NOT NULL, 
-        duration_in_minutes INTEGER NOT NULL 
-    ) 
-;
 
 ALTER TABLE time_slots 
     ADD 
@@ -117,35 +153,8 @@ ALTER TABLE time_slots
     ADD CONSTRAINT chk_time_format 
     CHECK (REGEXP_LIKE(start_time, '^([0-1][0-9]|2[0-3]):[0-5][0-9]$') AND REGEXP_LIKE(end_time, '^([0-1][0-9]|2[0-3]):[0-5][0-9]$'));
 
-ALTER TABLE time_slots 
-    ADD CONSTRAINT time_slots_PK PRIMARY KEY ( id );
-
-CREATE TABLE track_blocks 
-    ( 
-        id INTEGER NOT NULL, 
-        block_date DATE NOT NULL, 
-        reason VARCHAR (150) NOT NULL, 
-        created_at DATE NOT NULL, 
-        tracks_id INTEGER NOT NULL, 
-        time_slots_id INTEGER NOT NULL 
-    ) 
-;
-
-ALTER TABLE track_blocks 
-    ADD CONSTRAINT track_blocks_PK PRIMARY KEY ( id );
-
 ALTER TABLE track_blocks 
     ADD CONSTRAINT track_blocks_UN UNIQUE ( tracks_id, time_slots_id, block_date );
-
-CREATE TABLE track_schedules 
-    ( 
-        id INTEGER NOT NULL, 
-        day_of_week SMALLINT NOT NULL, 
-        is_open TINYINT(1) NOT NULL, 
-        time_slots_id INTEGER NOT NULL, 
-        tracks_id INTEGER NOT NULL 
-    ) 
-;
 
 ALTER TABLE track_schedules 
     ADD 
@@ -156,21 +165,8 @@ ALTER TABLE track_schedules
     CHECK (is_open IN (0, 1));
 
 ALTER TABLE track_schedules 
-    ADD CONSTRAINT track_schedules_PK PRIMARY KEY ( id );
-
-ALTER TABLE track_schedules 
     ADD CONSTRAINT track_schedules_UN UNIQUE ( tracks_id, day_of_week, time_slots_id );
 
-CREATE TABLE tracks 
-    ( 
-        id INTEGER NOT NULL, 
-        name VARCHAR (50) NOT NULL, 
-        max_karts INTEGER NOT NULL, 
-        is_active TINYINT(1) NOT NULL, 
-        updated_at DATE NOT NULL, 
-        created_at DATE NOT NULL 
-    ) 
-;
 
 ALTER TABLE tracks 
     ADD 
@@ -180,9 +176,8 @@ ALTER TABLE tracks
     ADD 
     CHECK (is_active IN (0, 1));
 
-ALTER TABLE tracks 
-    ADD CONSTRAINT tracks_PK PRIMARY KEY ( id );
 
+-- Foreign Keys
 ALTER TABLE booked_places 
     ADD CONSTRAINT booked_places_bookings_FK FOREIGN KEY (bookings_id) REFERENCES bookings (id) 
     ON DELETE CASCADE;
@@ -210,11 +205,3 @@ ALTER TABLE track_schedules
 ALTER TABLE track_schedules 
     ADD CONSTRAINT track_schedules_tracks_FK FOREIGN KEY (tracks_id) REFERENCES tracks (id) 
     ON DELETE CASCADE;
-
-ALTER TABLE booked_places AUTO_INCREMENT=1;
-ALTER TABLE bookings AUTO_INCREMENT=1;
-ALTER TABLE customers AUTO_INCREMENT=1;
-ALTER TABLE time_slots AUTO_INCREMENT=1;
-ALTER TABLE track_blocks AUTO_INCREMENT=1;
-ALTER TABLE track_schedules AUTO_INCREMENT=1;
-ALTER TABLE tracks AUTO_INCREMENT=1;
