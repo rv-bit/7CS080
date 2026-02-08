@@ -3,14 +3,33 @@
 --   site:      Oracle Database 21c
 --   type:      Oracle Database 21c
 
-DROP VIEW v_track_availability_view CASCADE CONSTRAINTS;
-DROP TABLE booked_places CASCADE CONSTRAINTS;
-DROP TABLE bookings CASCADE CONSTRAINTS;
-DROP TABLE customers CASCADE CONSTRAINTS;
-DROP TABLE time_slots CASCADE CONSTRAINTS;
-DROP TABLE track_blocks CASCADE CONSTRAINTS;
-DROP TABLE track_schedules CASCADE CONSTRAINTS;
-DROP TABLE tracks CASCADE CONSTRAINTS;
+ALTER TABLE `booked_places` DROP FOREIGN KEY `booked_places_bookings_FK`;
+ALTER TABLE `booked_places` DROP FOREIGN KEY `booked_places_time_slots_FK`;
+ALTER TABLE `booked_places` DROP FOREIGN KEY `booked_places_tracks_FK`;
+
+ALTER TABLE `bookings` DROP FOREIGN KEY `bookings_customers_FK`;
+
+ALTER TABLE `track_blocks` DROP FOREIGN KEY `track_blocks_time_slots_FK`;
+ALTER TABLE `track_blocks` DROP FOREIGN KEY `track_blocks_tracks_FK`;
+ALTER TABLE `track_schedules` DROP FOREIGN KEY `track_schedules_time_slots_FK`;
+ALTER TABLE `track_schedules` DROP FOREIGN KEY `track_schedules_tracks_FK`;
+
+ALTER TABLE `booked_places` DROP INDEX `idx_booked_places_availability`;
+ALTER TABLE `bookings` DROP INDEX `idx_bookings_status_reserved`;
+
+ALTER TABLE `customers` DROP INDEX `idx_customer_email`;
+
+ALTER TABLE `track_blocks` DROP INDEX `track_blocks_UN`;
+ALTER TABLE `track_schedules` DROP INDEX `track_schedules_UN`;
+
+DROP VIEW IF EXISTS v_track_availability_view;
+DROP TABLE IF EXISTS booked_places;
+DROP TABLE IF EXISTS bookings;
+DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS time_slots;
+DROP TABLE IF EXISTS track_blocks;
+DROP TABLE IF EXISTS track_schedules;
+DROP TABLE IF EXISTS tracks;
 
 -- predefined type, no DDL - MDSYS.SDO_GEOMETRY
 -- predefined type, no DDL - XMLTYPE
@@ -79,7 +98,7 @@ ALTER TABLE customers
     ADD CONSTRAINT customers_PK PRIMARY KEY ( id );
 
 ALTER TABLE customers 
-    ADD CONSTRAINT INDEX_1 UNIQUE ( email );
+    ADD CONSTRAINT idx_customer_email UNIQUE ( email );
 
 CREATE TABLE time_slots 
     ( 
@@ -167,35 +186,35 @@ ALTER TABLE tracks
 ALTER TABLE booked_places 
     ADD CONSTRAINT booked_places_bookings_FK FOREIGN KEY (bookings_id) REFERENCES bookings (id) 
     ON DELETE CASCADE
-    NOT DEFERRABLE;
+    ;
 
 ALTER TABLE booked_places 
     ADD CONSTRAINT booked_places_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id) 
-    NOT DEFERRABLE;
+    ;
 
 ALTER TABLE booked_places 
     ADD CONSTRAINT booked_places_tracks_FK FOREIGN KEY (tracks_id) REFERENCES tracks (id) 
-    NOT DEFERRABLE;
+    ;
 
 ALTER TABLE bookings 
     ADD CONSTRAINT bookings_customers_FK FOREIGN KEY (customers_id) REFERENCES customers (id) 
     ON DELETE CASCADE 
-    NOT DEFERRABLE;
+    ;
 
 ALTER TABLE track_blocks 
     ADD CONSTRAINT track_blocks_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id) 
-    NOT DEFERRABLE;
+    ;
 
 ALTER TABLE track_blocks 
     ADD CONSTRAINT track_blocks_tracks_FK FOREIGN KEY (tracks_id) REFERENCES tracks (id) 
     ON DELETE CASCADE
-    NOT DEFERRABLE;
+    ;
 
 ALTER TABLE track_schedules 
     ADD CONSTRAINT track_schedules_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id) 
-    NOT DEFERRABLE;
+    ;
 
 ALTER TABLE track_schedules 
     ADD CONSTRAINT track_schedules_tracks_FK FOREIGN KEY (tracks_id) REFERENCES tracks (id) 
     ON DELETE CASCADE
-    NOT DEFERRABLE;
+    ;
