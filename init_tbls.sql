@@ -78,7 +78,7 @@ CREATE INDEX idx_bookings_status_reserved ON bookings
 
 ALTER TABLE bookings 
     ADD CONSTRAINT booking_status_CK 
-    CHECK (UPPER(status) IN ('PENDING', 'RESERVED', 'CONFIRMED', 'CANCELLED', 'COMPLETED'));
+    CHECK (UPPER(status) IN ('PENDING', 'CONFIRMED', 'CANCELLED', 'COMPLETED'));
 
 ALTER TABLE bookings 
     ADD CONSTRAINT bookings_PK PRIMARY KEY ( id );
