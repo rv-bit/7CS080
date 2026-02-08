@@ -185,36 +185,36 @@ ALTER TABLE tracks
 
 ALTER TABLE booked_places 
     ADD CONSTRAINT booked_places_bookings_FK FOREIGN KEY (bookings_id) REFERENCES bookings (id) 
-    ON DELETE CASCADE
-    ;
+    ON DELETE CASCADE;
 
 ALTER TABLE booked_places 
-    ADD CONSTRAINT booked_places_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id) 
-    ;
+    ADD CONSTRAINT booked_places_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id) ;
 
 ALTER TABLE booked_places 
-    ADD CONSTRAINT booked_places_tracks_FK FOREIGN KEY (tracks_id) REFERENCES tracks (id) 
-    ;
+    ADD CONSTRAINT booked_places_tracks_FK FOREIGN KEY (tracks_id) REFERENCES tracks (id) ;
 
 ALTER TABLE bookings 
     ADD CONSTRAINT bookings_customers_FK FOREIGN KEY (customers_id) REFERENCES customers (id) 
-    ON DELETE CASCADE 
-    ;
+    ON DELETE CASCADE ;
 
 ALTER TABLE track_blocks 
-    ADD CONSTRAINT track_blocks_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id) 
-    ;
+    ADD CONSTRAINT track_blocks_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id) ;
 
 ALTER TABLE track_blocks 
     ADD CONSTRAINT track_blocks_tracks_FK FOREIGN KEY (tracks_id) REFERENCES tracks (id) 
-    ON DELETE CASCADE
-    ;
+    ON DELETE CASCADE;
 
 ALTER TABLE track_schedules 
-    ADD CONSTRAINT track_schedules_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id) 
-    ;
+    ADD CONSTRAINT track_schedules_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id) ;
 
 ALTER TABLE track_schedules 
     ADD CONSTRAINT track_schedules_tracks_FK FOREIGN KEY (tracks_id) REFERENCES tracks (id) 
-    ON DELETE CASCADE
-    ;
+    ON DELETE CASCADE;
+
+ALTER TABLE booked_places AUTO_INCREMENT=1;
+ALTER TABLE bookings AUTO_INCREMENT=1;
+ALTER TABLE customers AUTO_INCREMENT=1;
+ALTER TABLE time_slots AUTO_INCREMENT=1;
+ALTER TABLE track_blocks AUTO_INCREMENT=1;
+ALTER TABLE track_schedules AUTO_INCREMENT=1;
+ALTER TABLE tracks AUTO_INCREMENT=1;
