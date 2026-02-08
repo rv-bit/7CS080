@@ -122,7 +122,7 @@ CREATE TABLE track_schedules
     ( 
         id INTEGER NOT NULL, 
         day_of_week SMALLINT NOT NULL, 
-        is_open NUMBER (1) NOT NULL, 
+        is_open TINYINT(1) NOT NULL, 
         time_slots_id INTEGER NOT NULL, 
         tracks_id INTEGER NOT NULL 
     ) 
@@ -147,7 +147,7 @@ CREATE TABLE tracks
         id INTEGER NOT NULL, 
         name VARCHAR (50) NOT NULL, 
         max_karts INTEGER NOT NULL, 
-        is_active NUMBER (1) NOT NULL, 
+        is_active TINYINT(1) NOT NULL, 
         updated_at DATE NOT NULL, 
         created_at DATE NOT NULL 
     ) 

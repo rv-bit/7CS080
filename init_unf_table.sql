@@ -28,13 +28,13 @@ CREATE TABLE kart_racing_unf
 		-- Track Schedules
 		schedule_id INTEGER NOT NULL, 
 		schedule_day_of_week SMALLINT NOT NULL, 
-        schedule_is_open NUMBER (1) NOT NULL, 
+        schedule_is_open TINYINT(1) NOT NULL, 
 
 		-- Tracks
 		track_id INTEGER NOT NULL,
 		track_name VARCHAR (50) NOT NULL, 
         track_max_karts INTEGER NOT NULL, 
-        track_is_active NUMBER (1) NOT NULL, 
+        track_is_active TINYINT(1) NOT NULL, 
         track_updated_at DATE NOT NULL, 
         track_created_at DATE NOT NULL 
     ) 
