@@ -40,7 +40,7 @@ CREATE TABLE booked_places
         bookings_id INT NOT NULL, 
         tracks_id INT NOT NULL, 
         time_slots_id INT NOT NULL, 
-        booking_date DATE NOT NULL, 
+        booking_date DATETIME NOT NULL, 
         quantity INT NOT NULL 
     ) 
 ;
@@ -49,8 +49,9 @@ CREATE TABLE bookings
     ( 
         id INT NOT NULL, 
         status VARCHAR (20) NOT NULL, 
-        created_at DATE NOT NULL, 
-        reserved_until DATE, 
+        created_at DATETIME NOT NULL,
+        updated_at DATETIME,
+        reserved_until DATETIME, 
         customers_id INT NOT NULL 
     ) 
 ;
@@ -62,8 +63,8 @@ CREATE TABLE customers
         first_name VARCHAR (50) NOT NULL, 
         last_name VARCHAR (50) NOT NULL, 
         email VARCHAR (50) NOT NULL, 
-        updated_at DATE NOT NULL, 
-        created_at DATE NOT NULL 
+        updated_at DATETIME, 
+        created_at DATETIME NOT NULL 
     ) 
 ;
 
@@ -79,9 +80,9 @@ CREATE TABLE time_slots
 CREATE TABLE track_blocks 
     ( 
         id INT NOT NULL, 
-        block_date DATE NOT NULL, 
+        block_date DATETIME NOT NULL, 
         reason VARCHAR (150) NOT NULL, 
-        created_at DATE NOT NULL, 
+        created_at DATETIME NOT NULL, 
         tracks_id INT NOT NULL, 
         time_slots_id INT NOT NULL 
     ) 
@@ -103,8 +104,8 @@ CREATE TABLE tracks
         name VARCHAR (50) NOT NULL, 
         max_karts INT NOT NULL, 
         is_active TINYINT(1) NOT NULL, 
-        updated_at DATE NOT NULL, 
-        created_at DATE NOT NULL 
+        updated_at DATETIME, 
+        created_at DATETIME NOT NULL 
     ) 
 ;
 
