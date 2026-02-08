@@ -44,7 +44,7 @@ ALTER TABLE booked_places
 CREATE TABLE bookings 
     ( 
         id INTEGER NOT NULL, 
-        status VARCHAR (20 CHAR) NOT NULL, 
+        status VARCHAR (20) NOT NULL, 
         created_at DATE NOT NULL, 
         reserved_until DATE, 
         customers_id INTEGER NOT NULL 
@@ -67,9 +67,9 @@ ALTER TABLE bookings
 CREATE TABLE customers 
     ( 
         id INTEGER NOT NULL, 
-        first_name VARCHAR (50 CHAR) NOT NULL, 
-        last_name VARCHAR (50 CHAR) NOT NULL, 
-        email VARCHAR (50 CHAR) NOT NULL, 
+        first_name VARCHAR (50) NOT NULL, 
+        last_name VARCHAR (50) NOT NULL, 
+        email VARCHAR (50) NOT NULL, 
         updated_at DATE NOT NULL, 
         created_at DATE NOT NULL 
     ) 
@@ -84,8 +84,8 @@ ALTER TABLE customers
 CREATE TABLE time_slots 
     ( 
         id INTEGER NOT NULL, 
-        start_time VARCHAR (5 CHAR) NOT NULL, 
-        end_time VARCHAR (5 CHAR) NOT NULL, 
+        start_time VARCHAR (5) NOT NULL, 
+        end_time VARCHAR (5) NOT NULL, 
         duration_in_minutes INTEGER NOT NULL 
     ) 
 ;
@@ -105,7 +105,7 @@ CREATE TABLE track_blocks
     ( 
         id INTEGER NOT NULL, 
         block_date DATE NOT NULL, 
-        reason VARCHAR (150 CHAR) NOT NULL, 
+        reason VARCHAR (150) NOT NULL, 
         created_at DATE NOT NULL, 
         tracks_id INTEGER NOT NULL, 
         time_slots_id INTEGER NOT NULL 
@@ -145,7 +145,7 @@ ALTER TABLE track_schedules
 CREATE TABLE tracks 
     ( 
         id INTEGER NOT NULL, 
-        name VARCHAR (50 CHAR) NOT NULL, 
+        name VARCHAR (50) NOT NULL, 
         max_karts INTEGER NOT NULL, 
         is_active NUMBER (1) NOT NULL, 
         updated_at DATE NOT NULL, 
