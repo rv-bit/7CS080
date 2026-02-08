@@ -1,0 +1,143 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="kart_racing_unf" directorySegmentName="seg_0" id="8D22FDD2-A4ED-5B6D-F8C2-A72101F37EF5">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="track_created_at" id="024673E4-4F65-AA7A-9C97-02836DFEC444">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="customer_first_name" id="040A4507-6740-B558-B571-EC8091F69096">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="track_updated_at" id="12B6B792-8E0F-4A1C-CCBE-32E8065F3A56">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="booked_place_id" id="1AEB2E25-D9F5-92B8-7F25-7B0B4AFCB330">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="time_slot_end_time" id="35884411-FAF4-4BBA-920D-2080D2D4A88F">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="schedule_day_of_week" id="4513C019-5CFB-0A7A-9D91-B07C20C119F9">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="booking_reserved_until" id="498A17DD-3413-E6EC-91AE-C3B2BA707692">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="customer_id" id="53F0C82A-9DB5-EB35-DA78-81EE006DC786">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="customer_email" id="5D96D71B-5D03-49EA-B6AD-1A99AE2FE593">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="track_is_active" id="74C24CAE-ADBD-835C-8707-276AF6C9975F">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="booked_place_quantity" id="8E86362F-251D-92A8-6DC0-5CAF2111567F">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="time_slot_start_time" id="8F133C6D-F1BA-2903-6AEB-08FE9B928224">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="track_name" id="917C1FDB-F8FA-CC94-69C5-D77C17929F7B">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="booked_place_booking_date" id="9564775D-00ED-9A60-448C-BB163F5A8FD6">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="customer_created_at" id="97203343-3471-91BA-28EF-096C113FBA51">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="time_slot_duration_in_minutes" id="9BA7CACF-0ADC-55B3-44F6-CA5F74D597FF">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="booking_id" id="C01A166C-0D85-1213-AB02-F9A82FCED418">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="track_max_karts" id="D49016DA-6377-0AA7-0945-39DE10567C14">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="customer_updated_at" id="D7F742E1-82BC-7EAD-8C9C-6E26826CD927">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="customer_last_name" id="D933DC50-6277-534D-4F98-803D3CB8555B">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="track_id" id="E312F4F8-7D3D-CD25-C580-D4B418A4AE4A">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="booking_status" id="E451E5A5-799C-57A8-A2B6-654916D08200">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="booking_created_at" id="F6492BF9-9BE7-6C2F-5CE6-5B9EAD48AD6F">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="schedule_id" id="F68A156C-7DE6-3AD6-F87F-B8790ED8B03E">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="schedule_is_open" id="FADAA3CC-1FA6-E6E1-A685-9FAB4DCE1119">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="time_slot_id" id="FC9B8995-1455-1931-0458-2F2D37ADBEE2">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+</TableProxyOraclev20c>

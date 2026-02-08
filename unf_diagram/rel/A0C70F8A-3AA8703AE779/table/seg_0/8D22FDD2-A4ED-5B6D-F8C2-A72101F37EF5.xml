@@ -1,0 +1,326 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8D22FDD2-A4ED-5B6D-F8C2-A72101F37EF5" name="kart_racing_unf">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>46A42B0C-1758-1B7D-4334-4BC12BF240EC</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="customer_id" id="53F0C82A-9DB5-EB35-DA78-81EE006DC786">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>B966F6CD-9B2A-DF2A-2E1A-BA5C0E9DF739</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>879DA762-BEB4-AF13-27E2-79FFF6351023</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customer_first_name" id="040A4507-6740-B558-B571-EC8091F69096">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>FB0DA140-C189-A77A-EED8-3EA1C0414D26</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>126EB046-2330-0742-E616-CCC95B9044B4</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customer_last_name" id="D933DC50-6277-534D-4F98-803D3CB8555B">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>6107A012-1EC4-411C-7268-8F73E704DB98</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>126EB046-2330-0742-E616-CCC95B9044B4</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customer_email" id="5D96D71B-5D03-49EA-B6AD-1A99AE2FE593">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>DD198DBC-B33A-1567-90AD-91E88F1CD4C0</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>126EB046-2330-0742-E616-CCC95B9044B4</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customer_updated_at" id="D7F742E1-82BC-7EAD-8C9C-6E26826CD927">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>303ED29E-BDAC-F8C9-7EF4-33F8CEF16D16</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>C64B87BF-4FF0-316B-526D-0D1840355500</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customer_created_at" id="97203343-3471-91BA-28EF-096C113FBA51">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>0F0CBDAF-F639-755D-0743-902F73C8CE48</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>C64B87BF-4FF0-316B-526D-0D1840355500</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="booked_place_id" id="1AEB2E25-D9F5-92B8-7F25-7B0B4AFCB330">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>A395BCD4-890E-DF76-BAE6-318D3357452F</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>879DA762-BEB4-AF13-27E2-79FFF6351023</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="booked_place_booking_date" id="9564775D-00ED-9A60-448C-BB163F5A8FD6">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>3F3E2556-DE16-83B1-B989-71636D522C9C</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>C64B87BF-4FF0-316B-526D-0D1840355500</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="booked_place_quantity" id="8E86362F-251D-92A8-6DC0-5CAF2111567F">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>1ED23581-9BD6-380A-6500-EE10624D74BA</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>879DA762-BEB4-AF13-27E2-79FFF6351023</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="booking_id" id="C01A166C-0D85-1213-AB02-F9A82FCED418">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>366B17F5-E509-3DEC-9DCD-BCEFC384399B</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>879DA762-BEB4-AF13-27E2-79FFF6351023</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="booking_status" id="E451E5A5-799C-57A8-A2B6-654916D08200">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>74C83865-19F2-3D6F-6413-F8EEC4805282</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>64D9C645-A984-E5F8-BEE6-06C45D8DBE71</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="booking_created_at" id="F6492BF9-9BE7-6C2F-5CE6-5B9EAD48AD6F">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>48A100D0-1474-9862-C687-23C3826051D6</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>C64B87BF-4FF0-316B-526D-0D1840355500</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="booking_reserved_until" id="498A17DD-3413-E6EC-91AE-C3B2BA707692">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>3AD7B2CA-5595-ADC3-1A21-E67B8C7C548A</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>C64B87BF-4FF0-316B-526D-0D1840355500</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="time_slot_id" id="FC9B8995-1455-1931-0458-2F2D37ADBEE2">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>2024CFCE-786B-E48A-4BD1-4F05BE07053B</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>879DA762-BEB4-AF13-27E2-79FFF6351023</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="time_slot_start_time" id="8F133C6D-F1BA-2903-6AEB-08FE9B928224">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>7FCE34A1-8445-4DE8-6D4E-28FF47A2D2AA</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>8C29D2FA-94FA-90E1-879B-47140F76F224</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="time_slot_end_time" id="35884411-FAF4-4BBA-920D-2080D2D4A88F">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>71219D32-974B-9176-6533-359BB53EA133</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>8C29D2FA-94FA-90E1-879B-47140F76F224</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="time_slot_duration_in_minutes" id="9BA7CACF-0ADC-55B3-44F6-CA5F74D597FF">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>147BBCB4-C27F-30F0-53AC-33EB3586F1CC</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>879DA762-BEB4-AF13-27E2-79FFF6351023</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="schedule_id" id="F68A156C-7DE6-3AD6-F87F-B8790ED8B03E">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>BE41F52B-F909-A10F-1BF4-6A3E5427668A</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>879DA762-BEB4-AF13-27E2-79FFF6351023</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="schedule_day_of_week" id="4513C019-5CFB-0A7A-9D91-B07C20C119F9">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>152DF75F-E4D3-9183-D301-2C8001EEBD21</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<domain>4C66C4CD-E3BE-238E-D107-B9CF94245314</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="schedule_is_open" id="FADAA3CC-1FA6-E6E1-A685-9FAB4DCE1119">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>5524E64D-92CD-3731-9571-B2DE657020BC</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>F20B981F-41E2-0BB4-D81D-5C87349217B5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="track_id" id="E312F4F8-7D3D-CD25-C580-D4B418A4AE4A">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>0A0C4AD8-D140-EB37-C8B8-2B3281D7DD9C</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>879DA762-BEB4-AF13-27E2-79FFF6351023</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="track_name" id="917C1FDB-F8FA-CC94-69C5-D77C17929F7B">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>B6EDB32B-CA11-927A-0973-71EDD4317AD3</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>126EB046-2330-0742-E616-CCC95B9044B4</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="track_max_karts" id="D49016DA-6377-0AA7-0945-39DE10567C14">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>FCCF2338-B4DC-519B-2788-418E641A3EA5</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>879DA762-BEB4-AF13-27E2-79FFF6351023</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="track_is_active" id="74C24CAE-ADBD-835C-8707-276AF6C9975F">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>70D145EA-3F37-C626-AFD3-F965C9DAA4A0</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>F20B981F-41E2-0BB4-D81D-5C87349217B5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="track_updated_at" id="12B6B792-8E0F-4A1C-CCBE-32E8065F3A56">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>D280FC06-9A7B-D900-C2BA-67CC1BA10836</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>C64B87BF-4FF0-316B-526D-0D1840355500</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="track_created_at" id="024673E4-4F65-AA7A-9C97-02836DFEC444">
+<sourceDDLFile>unf_table.sql</sourceDDLFile>
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<importedID>DABFB8C5-6FE4-F33C-5888-1168B83DDD5B</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>C64B87BF-4FF0-316B-526D-0D1840355500</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+</Table>

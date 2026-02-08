@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Relational_1" id="A0C70F8A-1FC0-90DC-2FF5-3AA8703AE779" mainViewID="402A8B28-A7FC-7FB9-AAA7-D884096C9BBC">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 10:27:18 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<selectedRDBMSSite>01F6E6D1-21D0-CFBD-ABDD-3988D1813575</selectedRDBMSSite>
+<importDDLFileStamps>
+<importDDLFileStamp class="oracle.dbtools.crest.imports.DDLFileStamp">
+<fileName>unf_table.sql</fileName>
+<pathName>/Users/rv/Projects/7CS080</pathName>
+<dbType>17</dbType>
+</importDDLFileStamp>
+</importDDLFileStamps>
+</relationalModel>

@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<DomainFile class="oracle.dbtools.crest.model.design.DomainFileWrapper" fileName="unf_table_Domains">
+<domains>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_50 CHAR" id="126EB046-2330-0742-E616-CCC95B9044B4">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<fileName>unf_table_Domains</fileName>
+<logicalDatatype>LOGDT024</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="SMALLINT_0_0_0" id="4C66C4CD-E3BE-238E-D107-B9CF94245314">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<fileName>unf_table_Domains</fileName>
+<logicalDatatype>LOGDT018</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_20 CHAR" id="64D9C645-A984-E5F8-BEE6-06C45D8DBE71">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<fileName>unf_table_Domains</fileName>
+<logicalDatatype>LOGDT024</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="Integer_0_0_0" id="879DA762-BEB4-AF13-27E2-79FFF6351023">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<fileName>unf_table_Domains</fileName>
+<logicalDatatype>LOGDT011</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_5 CHAR" id="8C29D2FA-94FA-90E1-879B-47140F76F224">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>5 CHAR</dataTypeSize>
+<fileName>unf_table_Domains</fileName>
+<logicalDatatype>LOGDT024</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="Date_0_0_0" id="C64B87BF-4FF0-316B-526D-0D1840355500">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<fileName>unf_table_Domains</fileName>
+<logicalDatatype>LOGDT007</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_1_0_0" id="F20B981F-41E2-0BB4-D81D-5C87349217B5">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-08 13:19:38 UTC</createdTime>
+<ownerDesignName>unf_diagram</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>1</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>0</dataTypeSize>
+<fileName>unf_table_Domains</fileName>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Domain>
+</domains>
+</DomainFile>
