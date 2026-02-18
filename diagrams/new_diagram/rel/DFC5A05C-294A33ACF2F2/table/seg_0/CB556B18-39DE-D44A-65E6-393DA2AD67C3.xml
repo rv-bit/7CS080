@@ -88,7 +88,7 @@
 <colUsage columnID="B0A92D10-D857-96B9-B689-5D459C504719"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="71FF7FBB-3B0C-353A-3BC2-59129C87FCA1" name="INDEX_1">
+<ind_PK_UK id="71FF7FBB-3B0C-353A-3BC2-59129C87FCA1" name="customer_email_UN">
 <sourceDDLFile>init_views.sql</sourceDDLFile>
 <createdBy>rv</createdBy>
 <createdTime>2026-02-07 16:46:26 UTC</createdTime>

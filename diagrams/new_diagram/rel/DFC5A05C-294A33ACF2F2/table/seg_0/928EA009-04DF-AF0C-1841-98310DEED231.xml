@@ -108,4 +108,18 @@
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
+<tableCheckConstraint name="tracks_max_karts_CK" directorySegmentName="seg_0" id="9632E1C4-08EE-25CE-7614-BF5FA7652EBE">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-18 17:51:00 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<rule><![CDATA[(max_karts > 0)]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="tracks_open_CK" directorySegmentName="seg_0" id="EBEF1E27-8811-3CA9-6EA6-5720A202B5D6">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-18 17:51:00 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<rule><![CDATA[(is_active IN (0, 1))]]></rule>
+</tableCheckConstraint>
+</tableCheckConstraints>
 </Table>

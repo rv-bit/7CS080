@@ -129,4 +129,18 @@
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
+<tableCheckConstraint name="track_schedules_day_CK" directorySegmentName="seg_0" id="174E7D7C-3C74-4FB3-CED9-D5AE0C10CD21">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-18 17:50:10 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<rule><![CDATA[(day_of_week BETWEEN 1 AND 7)]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="track_schedules_open_CK" directorySegmentName="seg_0" id="32BA8D5A-B642-D0DB-CD9E-3C6EDAC6EB50">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-18 17:50:25 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<rule><![CDATA[(is_open IN (0, 1))]]></rule>
+</tableCheckConstraint>
+</tableCheckConstraints>
 </Table>

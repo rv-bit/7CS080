@@ -72,12 +72,18 @@
 </ind_PK_UK>
 </indexes>
 <tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
-<tableCheckConstraint name="chk_time_format" directorySegmentName="seg_0" id="D2FEE9A3-951D-39BD-35F6-69F01BDF716F">
+<tableCheckConstraint name="time_slots_time_format_CK" directorySegmentName="seg_0" id="D2FEE9A3-951D-39BD-35F6-69F01BDF716F">
 <sourceDDLFile>init_views.sql</sourceDDLFile>
 <createdBy>rv</createdBy>
 <createdTime>2026-02-07 16:46:26 UTC</createdTime>
 <ownerDesignName>new_diagram</ownerDesignName>
 <rule><![CDATA[REGEXP_LIKE(start_time, '^([0-1][0-9]|2[0-3]):[0-5][0-9]$') AND REGEXP_LIKE(end_time, '^([0-1][0-9]|2[0-3]):[0-5][0-9]$')]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="time_slots_dur_CK" directorySegmentName="seg_0" id="A27DF9CE-3A6D-E015-6275-1B85098AB4C8">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-18 17:49:45 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<rule><![CDATA[(duration_in_minutes = 90)]]></rule>
 </tableCheckConstraint>
 </tableCheckConstraints>
 </Table>
