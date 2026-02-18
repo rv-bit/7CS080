@@ -11,7 +11,7 @@ INSERT INTO time_slots (start_time, end_time, duration_in_minutes)
 		
 		UNION ALL
 		
-		-- Recursive case: add 30 minutes to start_time
+		-- Recursive case: add 30 minutes to end_time
 		SELECT 
 			TIME_FORMAT(ADDTIME(CONCAT(end_time, ':00'), '00:30:00'), '%H:%i'),
 			TIME_FORMAT(ADDTIME(CONCAT(start_time, ':00'), '02:00:00'), '%H:%i'),
