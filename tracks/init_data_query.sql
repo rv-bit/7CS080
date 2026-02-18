@@ -1,4 +1,4 @@
-INSERT INTO tracks (name, max_karts, is_active, created_at)
+INSERT INTO tracks ( name, max_karts, is_active, created_at )
 VALUES 
 ('Grand Prix Track', 10, 1, SYSDATE()),
 ('Speed Circuit', 5, 1, SYSDATE()),
