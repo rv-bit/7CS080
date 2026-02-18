@@ -144,7 +144,7 @@ ALTER TABLE bookings
     CHECK (UPPER(status) IN ('PENDING', 'CONFIRMED', 'CANCELLED', 'COMPLETED'));
 
 ALTER TABLE customers 
-    ADD CONSTRAINT idx_customer_email UNIQUE ( email );
+    ADD CONSTRAINT customer_email_UN UNIQUE ( email );
 
 ALTER TABLE time_slots 
     ADD 
@@ -176,6 +176,9 @@ ALTER TABLE tracks
 ALTER TABLE tracks 
     ADD 
     CHECK (is_active IN (0, 1));
+
+ALTER TABLE tracks 
+    ADD CONSTRAINT tracks__UN UNIQUE ( name ) ;
 
 
 -- Foreign Keys
