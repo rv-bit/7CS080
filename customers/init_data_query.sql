@@ -1,0 +1,22 @@
+INSERT INTO customers ( first_name, last_name, email, created_at )
+VALUES 
+('John', 'Smith', 'john.smith@example.com', SYSDATE()),
+('Emma', 'Johnson', 'emma.johnson@example.com', SYSDATE()),
+('Oliver', 'Williams', 'oliver.williams@example.com', SYSDATE()),
+('Olivia', 'Brown', 'olivia.brown@example.com', SYSDATE()),
+('Harry', 'Jones', 'harry.jones@example.com', SYSDATE()),
+('Amelia', 'Garcia', 'amelia.garcia@example.com', SYSDATE()),
+('George', 'Miller', 'george.miller@example.com', SYSDATE()),
+('Isla', 'Davis', 'isla.davis@example.com', SYSDATE()),
+('Jack', 'Rodriguez', 'jack.rodriguez@example.com', SYSDATE()),
+('Ava', 'Martinez', 'ava.martinez@example.com', SYSDATE()),
+('Charlie', 'Hernandez', 'charlie.hernandez@example.com', SYSDATE()),
+('Mia', 'Lopez', 'mia.lopez@example.com', SYSDATE()),
+('Thomas', 'Gonzalez', 'thomas.gonzalez@example.com', SYSDATE()),
+('Sophia', 'Wilson', 'sophia.wilson@example.com', SYSDATE()),
+('Jacob', 'Anderson', 'jacob.anderson@example.com', SYSDATE()),
+('Grace', 'Thomas', 'grace.thomas@example.com', SYSDATE()),
+('Alfie', 'Taylor', 'alfie.taylor@example.com', SYSDATE()),
+('Freya', 'Moore', 'freya.moore@example.com', SYSDATE()),
+('Oscar', 'Jackson', 'oscar.jackson@example.com', SYSDATE()),
+('Lily', 'Martin', 'lily.martin@example.com', SYSDATE());
