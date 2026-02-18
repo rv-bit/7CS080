@@ -70,6 +70,18 @@
 <colUsage columnID="2AD8E198-C938-4B28-3529-6619D0994AC9"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="D8B0CD2B-5F89-171B-6611-0A6DB8351F96" name="time_slots_UN">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-18 19:21:14 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A6E01885-B1F3-EE2B-DCD7-133C4BFDB745"/>
+<colUsage columnID="AD71A7E1-5F81-7AD8-1025-0FE4EB581820"/>
+<colUsage columnID="72849061-C59A-B888-36D0-7729F4D9560D"/>
+</indexColumnUsage>
+</ind_PK_UK>
 </indexes>
 <tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
 <tableCheckConstraint name="time_slots_time_format_CK" directorySegmentName="seg_0" id="D2FEE9A3-951D-39BD-35F6-69F01BDF716F">

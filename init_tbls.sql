@@ -17,10 +17,11 @@ ALTER TABLE `track_schedules` DROP FOREIGN KEY `track_schedules_tracks_FK`;
 ALTER TABLE `booked_places` DROP INDEX `idx_booked_places_availability`;
 ALTER TABLE `bookings` DROP INDEX `idx_bookings_status_reserved`;
 
-ALTER TABLE `customers` DROP INDEX `idx_customer_email`;
-
 ALTER TABLE `track_blocks` DROP INDEX `track_blocks_UN`;
 ALTER TABLE `track_schedules` DROP INDEX `track_schedules_UN`;
+ALTER TABLE `time_slots` DROP INDEX `time_slots_UN`;
+ALTER TABLE `tracks` DROP INDEX `tracks_UN`;
+ALTER TABLE `customers` DROP INDEX `customer_email_UN`;
 
 DROP VIEW IF EXISTS v_track_availability_view;
 DROP TABLE IF EXISTS booked_places;
@@ -171,6 +172,9 @@ ALTER TABLE tracks
 ALTER TABLE customers 
     ADD CONSTRAINT customer_email_UN UNIQUE ( email );
 
+ALTER TABLE time_slots
+    ADD CONSTRAINT time_slots_UN UNIQUE ( start_time, end_time, duration_in_minutes );
+
 ALTER TABLE track_blocks 
     ADD CONSTRAINT track_blocks_UN UNIQUE ( tracks_id, time_slots_id, block_date );
 
@@ -178,7 +182,7 @@ ALTER TABLE track_schedules
     ADD CONSTRAINT track_schedules_UN UNIQUE ( tracks_id, day_of_week, time_slots_id );
 
 ALTER TABLE tracks 
-    ADD CONSTRAINT tracks__UN UNIQUE ( name ) ;
+    ADD CONSTRAINT tracks_UN UNIQUE ( name ) ;
 
 -- Foreign Keys
 ALTER TABLE booked_places 
@@ -186,24 +190,24 @@ ALTER TABLE booked_places
     ON DELETE CASCADE;
 
 ALTER TABLE booked_places 
-    ADD CONSTRAINT booked_places_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id) ;
+    ADD CONSTRAINT booked_places_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id);
 
 ALTER TABLE booked_places 
-    ADD CONSTRAINT booked_places_tracks_FK FOREIGN KEY (tracks_id) REFERENCES tracks (id) ;
+    ADD CONSTRAINT booked_places_tracks_FK FOREIGN KEY (tracks_id) REFERENCES tracks (id);
 
 ALTER TABLE bookings 
     ADD CONSTRAINT bookings_customers_FK FOREIGN KEY (customers_id) REFERENCES customers (id) 
-    ON DELETE CASCADE ;
+    ON DELETE CASCADE;
 
 ALTER TABLE track_blocks 
-    ADD CONSTRAINT track_blocks_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id) ;
+    ADD CONSTRAINT track_blocks_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id);
 
 ALTER TABLE track_blocks 
     ADD CONSTRAINT track_blocks_tracks_FK FOREIGN KEY (tracks_id) REFERENCES tracks (id) 
     ON DELETE CASCADE;
 
 ALTER TABLE track_schedules 
-    ADD CONSTRAINT track_schedules_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id) ;
+    ADD CONSTRAINT track_schedules_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id);
 
 ALTER TABLE track_schedules 
     ADD CONSTRAINT track_schedules_tracks_FK FOREIGN KEY (tracks_id) REFERENCES tracks (id) 
