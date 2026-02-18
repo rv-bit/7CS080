@@ -134,52 +134,51 @@ CREATE INDEX idx_bookings_status_reserved ON bookings
     ) 
 ;
 
--- Constraints
-ALTER TABLE booked_places 
-    ADD 
-    CHECK (quantity > 0);
-
+-- Checks
 ALTER TABLE bookings 
     ADD CONSTRAINT booking_status_CK 
     CHECK (UPPER(status) IN ('PENDING', 'CONFIRMED', 'CANCELLED', 'COMPLETED'));
 
-ALTER TABLE customers 
-    ADD CONSTRAINT customer_email_UN UNIQUE ( email );
+ALTER TABLE booked_places 
+    ADD CONSTRAINT booked_places_quantity_CK
+    CHECK (quantity > 0);
 
 ALTER TABLE time_slots 
-    ADD 
+    ADD CONSTRAINT time_slots_dur_CK
     CHECK (duration_in_minutes = 90);
 
 ALTER TABLE time_slots 
-    ADD CONSTRAINT chk_time_format 
+    ADD CONSTRAINT time_slots_time_format_CK 
     CHECK (REGEXP_LIKE(start_time, '^([0-1][0-9]|2[0-3]):[0-5][0-9]$') AND REGEXP_LIKE(end_time, '^([0-1][0-9]|2[0-3]):[0-5][0-9]$'));
+
+ALTER TABLE track_schedules 
+    ADD CONSTRAINT track_schedules_day_CK
+    CHECK (day_of_week BETWEEN 1 AND 7);
+
+ALTER TABLE track_schedules 
+    ADD CONSTRAINT track_schedules_open_CK
+    CHECK (is_open IN (0, 1));
+
+ALTER TABLE tracks 
+    ADD CONSTRAINT tracks_max_karts_CK
+    CHECK (max_karts > 0);
+
+ALTER TABLE tracks 
+    ADD CONSTRAINT tracks_open_CK
+    CHECK (is_active IN (0, 1));
+
+-- Unique Constraints
+ALTER TABLE customers 
+    ADD CONSTRAINT customer_email_UN UNIQUE ( email );
 
 ALTER TABLE track_blocks 
     ADD CONSTRAINT track_blocks_UN UNIQUE ( tracks_id, time_slots_id, block_date );
 
 ALTER TABLE track_schedules 
-    ADD 
-    CHECK (day_of_week BETWEEN 1 AND 7);
-
-ALTER TABLE track_schedules 
-    ADD 
-    CHECK (is_open IN (0, 1));
-
-ALTER TABLE track_schedules 
     ADD CONSTRAINT track_schedules_UN UNIQUE ( tracks_id, day_of_week, time_slots_id );
-
-
-ALTER TABLE tracks 
-    ADD 
-    CHECK (max_karts > 0);
-
-ALTER TABLE tracks 
-    ADD 
-    CHECK (is_active IN (0, 1));
 
 ALTER TABLE tracks 
     ADD CONSTRAINT tracks__UN UNIQUE ( name ) ;
-
 
 -- Foreign Keys
 ALTER TABLE booked_places 
