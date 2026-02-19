@@ -1,6 +1,7 @@
 SET autocommit = 0; -- Causes for no auto committing in MySQL, shouldn't be used in Oracle
 
 -- Simple update where first name is Emma, and commit changes
+-- If name not found, rollbacks / raises error instantly
 START TRANSACTION;
 	UPDATE customers SET first_name = "CJ", updated_at = CURRENT_TIMESTAMP
 	WHERE first_name = "Emma";
