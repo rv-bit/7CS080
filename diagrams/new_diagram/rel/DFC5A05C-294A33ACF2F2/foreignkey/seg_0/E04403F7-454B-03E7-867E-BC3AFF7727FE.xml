@@ -5,7 +5,7 @@
 <createdTime>2026-02-07 16:46:26 UTC</createdTime>
 <ownerDesignName>new_diagram</ownerDesignName>
 <referredTableLongName>time_slots</referredTableLongName>
-<deleteRule>RESTRICT</deleteRule>
+<deleteRule>CASCADE</deleteRule>
 <referredTableID>313B2BC5-C5CA-1771-B39A-4F2F9CDC65B9</referredTableID>
 <keyObject>BA8F5948-94EB-0C21-9D92-D737F8BD9194</keyObject>
 <referredKeyID>BA8F5948-94EB-0C21-9D92-D737F8BD9194</referredKeyID>

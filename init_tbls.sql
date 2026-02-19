@@ -207,7 +207,8 @@ ALTER TABLE track_blocks
     ON DELETE CASCADE;
 
 ALTER TABLE track_schedules 
-    ADD CONSTRAINT track_schedules_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id);
+    ADD CONSTRAINT track_schedules_time_slots_FK FOREIGN KEY (time_slots_id) REFERENCES time_slots (id)
+    ON DELETE CASCADE;
 
 ALTER TABLE track_schedules 
     ADD CONSTRAINT track_schedules_tracks_FK FOREIGN KEY (tracks_id) REFERENCES tracks (id) 
