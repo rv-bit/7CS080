@@ -1,3 +1,8 @@
+-- I've added the truncate of all data, it's easier to test when changing query
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE time_slots;
+SET FOREIGN_KEY_CHECKS = 1;
+
 INSERT INTO time_slots (start_time, end_time, duration_in_minutes)
 	WITH RECURSIVE time_series AS (
 		-- base, we first add the first time slot, then we will add 
