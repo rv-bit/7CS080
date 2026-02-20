@@ -11,7 +11,7 @@ START TRANSACTION;
 	SELECT * FROM time_slots 
 	ORDER BY 1 ASC
 
--- -- Simple delete where first name is CJ, and commit changes
+-- -- Simple delete where id is 7, and commit changes
 START TRANSACTION;
 	DELETE FROM time_slots WHERE id = 7;
 	COMMIT;
