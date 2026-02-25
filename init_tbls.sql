@@ -41,7 +41,7 @@ CREATE TABLE booked_places
         bookings_id INT NOT NULL, 
         tracks_id INT NOT NULL, 
         time_slots_id INT NOT NULL, 
-        booking_date DATETIME NOT NULL, 
+        booking_date DATE NOT NULL, 
         quantity INT NOT NULL 
     ) 
 ;
