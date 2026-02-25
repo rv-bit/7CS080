@@ -41,7 +41,6 @@ CREATE TABLE booked_places
         bookings_id INT NOT NULL, 
         tracks_id INT NOT NULL, 
         time_slots_id INT NOT NULL, 
-        booking_date DATE NOT NULL, 
         quantity INT NOT NULL 
     ) 
 ;
@@ -53,6 +52,7 @@ CREATE TABLE bookings
         created_at DATETIME NOT NULL,
         updated_at DATETIME,
         reserved_until DATETIME, 
+        booking_date DATE NOT NULL,
         customers_id INT NOT NULL 
     ) 
 ;
@@ -124,7 +124,6 @@ CREATE INDEX idx_booked_places_availability ON booked_places
     ( 
         tracks_id ASC, 
         time_slots_id ASC, 
-        booking_date ASC 
     ) 
 ;
 
@@ -171,6 +170,9 @@ ALTER TABLE tracks
 -- Unique Constraints
 ALTER TABLE customers 
     ADD CONSTRAINT customer_email_UN UNIQUE ( email );
+
+ALTER TABLE bookings
+    ADD CONSTRAINT bookings_UN UNIQUE ( customers_id, booking_date );
 
 ALTER TABLE time_slots
     ADD CONSTRAINT time_slots_UN UNIQUE ( start_time, end_time, duration_in_minutes );

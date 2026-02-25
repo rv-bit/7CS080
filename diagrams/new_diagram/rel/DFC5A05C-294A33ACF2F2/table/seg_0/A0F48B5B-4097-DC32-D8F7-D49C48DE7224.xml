@@ -53,6 +53,17 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="booking_date" id="D101E9D6-C3CB-D838-C4E0-D77AB37F94A4">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-25 22:27:06 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>7899714E-E44E-FDD5-094A-329D593905C4</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="customers_id" id="15266163-FCB1-87F7-CC25-066D6BB73709">
 <sourceDDLFile>init_views.sql</sourceDDLFile>
 <createdBy>rv</createdBy>
@@ -79,6 +90,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="1115C5EA-A1E0-1E39-B06F-7D2A4DF53A7C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E3E3790C-2F43-A3DD-A621-3D99092CA26C" name="bookings_UN">
+<createdBy>rv</createdBy>
+<createdTime>2026-02-25 22:28:08 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="15266163-FCB1-87F7-CC25-066D6BB73709"/>
+<colUsage columnID="D101E9D6-C3CB-D838-C4E0-D77AB37F94A4"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="1E0BA6A5-6375-D0AF-D731-F870CC47FB1E" name="idx_bookings_status_reserved">

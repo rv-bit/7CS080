@@ -34,6 +34,7 @@ LEFT JOIN bookings b
     ON bp.bookings_id = b.id
 WHERE t.is_active = 1
 GROUP BY t.id, t.name, t.max_karts, bp.booking_date, bp.time_slots_id, ts.start_time, ts.end_time]]></userDefinedSQL>
+<validSQL>false</validSQL>
 <parsed>true</parsed>
 <viewElements>
 <viewElement class="oracle.dbtools.crest.model.design.relational.ColumnView" name="track_id" id="8C5AD21F-D57D-4ED6-2F40-FA0FC287967D">

@@ -61,17 +61,6 @@
 <colAssociation fkAssociation="CB487288-8510-3E21-EEEB-4F9D1DE8A574" referredColumn="2AD8E198-C938-4B28-3529-6619D0994AC9"/>
 </associations>
 </Column>
-<Column name="booking_date" id="C6454E49-7317-A58E-C1E5-1E37F5B83BEC">
-<sourceDDLFile>init_views.sql</sourceDDLFile>
-<createdBy>rv</createdBy>
-<createdTime>2026-02-07 16:46:26 UTC</createdTime>
-<ownerDesignName>new_diagram</ownerDesignName>
-<use>0</use>
-<logicalDatatype>LOGDT007</logicalDatatype>
-<domain>7899714E-E44E-FDD5-094A-329D593905C4</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="quantity" id="F6CEDEB0-36E2-4E83-2458-07AA20D21DC0">
 <sourceDDLFile>init_views.sql</sourceDDLFile>
 <createdBy>rv</createdBy>
@@ -110,7 +99,6 @@
 <indexColumnUsage>
 <colUsage columnID="060A563C-5391-D7C1-EEFF-20026DA26CD7"/>
 <colUsage columnID="AC62DDCF-FE19-24EE-F53E-8B78E9168238"/>
-<colUsage columnID="C6454E49-7317-A58E-C1E5-1E37F5B83BEC"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="D2C159F2-A6A1-4C0B-7476-18603FBA07A8" name="booked_places_bookings_FK">
