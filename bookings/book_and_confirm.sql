@@ -13,6 +13,20 @@ START TRANSACTION;
 	SET @quantity = 5;
 	SET @booking_date = '2026-03-05';
 
+	SELECT 1
+	FROM track_schedules
+	WHERE tracks_id = @track_Id
+		AND time_slots_id = @time_slot_Id
+		AND is_open = 1
+	FOR UPDATE;
+
+	SELECT 1
+	FROM track_blocks
+	WHERE tracks_id = @track_Id
+		AND block_date = @booking_date
+		AND time_slots_id = @time_slot_Id
+	FOR UPDATE;
+
 	-- Prevent race conditions by locking the track row
 	-- It will only return the max_karts if the track isn't blocked on that date and time slot
     SET @max_karts = 0;
