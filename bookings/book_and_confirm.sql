@@ -3,18 +3,28 @@
 --	 Happens when id removed and cannot find child / customer id, this error can happen to anything that is within the referential integrity
 --	 	Can happen on @track_Id, @time_slot_Id etc.
 
+-- INFO - The main query which looks to see active tracks and will try and book on a particular day and time
+--		If there is a track block in track_blocks, it will not return the max_karts which automatically will not allow the booking 
 START TRANSACTION;
 	-- Setting some default, these would have to come from an actual application, 	
 	SET @customer_Id = 3;
 	SET @track_Id = 2;
-	SET @time_slot_Id = 3;
+	SET @time_slot_Id = 1;
 	SET @quantity = 5;
-	SET @booking_date = '2026-02-27';
+	SET @booking_date = '2026-03-05';
 
 	-- Prevent race conditions by locking the track row
-	SELECT max_karts INTO @max_karts
-	FROM tracks
-	WHERE id = @track_Id AND is_active = 1
+	-- It will only return the max_karts if the track isn't blocked on that date and time slot
+    SET @max_karts = 0;
+
+	SELECT TRK.max_karts INTO @max_karts 
+	FROM tracks TRK
+		LEFT JOIN track_blocks TRKB ON TRKB.tracks_id = TRK.id
+			AND TRKB.block_date = @booking_date
+			AND TRKB.time_slots_id = @time_slot_Id
+	WHERE TRK.id = @track_Id
+		AND TRK.is_active = 1
+		AND TRKB.tracks_id IS NULL
 	FOR UPDATE;
 
 	-- Calculate used capacity for the slot and lock relevant rows
@@ -42,6 +52,8 @@ START TRANSACTION;
 	WHERE BKP.time_slots_id = @time_slot_Id
 	LIMIT 1;
 
+	SET @booking_id = 0;
+
 	-- Only insert if enough capacity
 	-- Use DUAL as given there is no reference to table, we can use methods from Oracle https://stackoverflow.com/a/33378903
 	-- Checks if the customer already has booking for that, and if he does we can update or insert only new record into booked_places
@@ -65,11 +77,3 @@ START TRANSACTION;
 		AND @booking_id > 0; 
 
 	COMMIT;
-
--- START TRANSACTION;
--- 	-- Only update the booking if the status is PENDING and is still in reservation process
--- 	UPDATE bookings BK SET status = 'CONFIRMED' WHERE id = 2 
--- 		AND BK.status IN ('PENDING')
--- 		AND reserved_until <= NOW();
-
--- 	COMMIT;
