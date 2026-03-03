@@ -81,7 +81,7 @@ CREATE TABLE time_slots
 CREATE TABLE track_blocks 
     ( 
         id INT NOT NULL, 
-        block_date DATETIME NOT NULL, 
+        block_date DATE NOT NULL, 
         reason VARCHAR (150) NOT NULL, 
         created_at DATETIME NOT NULL, 
         tracks_id INT NOT NULL, 
