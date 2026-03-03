@@ -108,6 +108,16 @@
 <colUsage columnID="028B426A-9CEE-0813-E380-3C6A4E45D149"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="03937852-7F77-955E-F8BE-B7323BC2FA4E" name="idx_track_schedules_slot">
+<createdBy>rv</createdBy>
+<createdTime>2026-03-03 22:37:53 UTC</createdTime>
+<ownerDesignName>new_diagram</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="88BA8C05-AA9A-6999-B3DD-4EF3AE7E3F20"/>
+<colUsage columnID="028B426A-9CEE-0813-E380-3C6A4E45D149"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="2E82F048-86AB-E715-A083-6E32FA00FF75" name="track_schedules_time_slots_FK">
 <createdBy>rv</createdBy>
 <createdTime>2026-02-07 16:46:26 UTC</createdTime>

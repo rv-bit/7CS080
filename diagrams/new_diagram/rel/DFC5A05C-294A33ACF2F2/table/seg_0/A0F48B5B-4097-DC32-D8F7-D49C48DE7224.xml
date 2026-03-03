@@ -103,13 +103,14 @@
 <colUsage columnID="D101E9D6-C3CB-D838-C4E0-D77AB37F94A4"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="1E0BA6A5-6375-D0AF-D731-F870CC47FB1E" name="idx_bookings_status_reserved">
+<ind_PK_UK id="1E0BA6A5-6375-D0AF-D731-F870CC47FB1E" name="idx_bookings_capacity">
 <sourceDDLFile>init_views.sql</sourceDDLFile>
 <createdBy>rv</createdBy>
 <createdTime>2026-02-07 16:46:26 UTC</createdTime>
 <ownerDesignName>new_diagram</ownerDesignName>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
+<colUsage columnID="D101E9D6-C3CB-D838-C4E0-D77AB37F94A4"/>
 <colUsage columnID="5DA776DC-E15F-2187-5E2B-A7BA1EFE2A2C"/>
 <colUsage columnID="2181233E-E518-0786-96BD-9C8E56A0DDF2"/>
 </indexColumnUsage>

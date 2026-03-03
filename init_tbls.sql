@@ -14,8 +14,9 @@ ALTER TABLE `track_blocks` DROP FOREIGN KEY `track_blocks_tracks_FK`;
 ALTER TABLE `track_schedules` DROP FOREIGN KEY `track_schedules_time_slots_FK`;
 ALTER TABLE `track_schedules` DROP FOREIGN KEY `track_schedules_tracks_FK`;
 
-ALTER TABLE `booked_places` DROP INDEX `idx_booked_places_availability`;
-ALTER TABLE `bookings` DROP INDEX `idx_bookings_status_reserved`;
+ALTER TABLE `track_schedules` DROP INDEX `idx_track_schedules_slot`;
+ALTER TABLE `booked_places` DROP INDEX `idx_booked_places_capacity`;
+ALTER TABLE `bookings` DROP INDEX `idx_bookings_capacity`;
 
 ALTER TABLE `track_blocks` DROP INDEX `track_blocks_UN`;
 ALTER TABLE `track_schedules` DROP INDEX `track_schedules_UN`;
@@ -120,19 +121,28 @@ ALTER TABLE track_schedules MODIFY id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
 ALTER TABLE tracks MODIFY id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
 
 -- Indexes
-CREATE INDEX idx_booked_places_availability ON booked_places 
-    ( 
-        tracks_id ASC, 
-        time_slots_id ASC, 
-    ) 
-;
+-- Lock slot precisely
+CREATE INDEX idx_track_schedules_slot 
+ON track_schedules (
+    tracks_id, 
+    time_slots_id
+);
 
-CREATE INDEX idx_bookings_status_reserved ON bookings 
-    ( 
-        status ASC, 
-        reserved_until ASC 
-    ) 
-;
+-- Speed capacity lookup
+CREATE INDEX idx_booked_places_capacity 
+ON booked_places (
+    tracks_id, 
+    time_slots_id, 
+    bookings_id
+);
+
+-- Speed booking filtering
+CREATE INDEX idx_bookings_capacity 
+ON bookings (
+    booking_date, 
+    status, 
+    reserved_until
+);
 
 -- Checks
 ALTER TABLE bookings 

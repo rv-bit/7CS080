@@ -90,7 +90,7 @@
 <colUsage columnID="757FB86B-A24E-D9B6-012C-73544E8BB197"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="C4396214-E0A4-630F-18C4-28AD5DDCA403" name="idx_booked_places_availability">
+<ind_PK_UK id="C4396214-E0A4-630F-18C4-28AD5DDCA403" name="idx_booked_places_capacity">
 <sourceDDLFile>init_views.sql</sourceDDLFile>
 <createdBy>rv</createdBy>
 <createdTime>2026-02-07 16:46:26 UTC</createdTime>
@@ -99,6 +99,7 @@
 <indexColumnUsage>
 <colUsage columnID="060A563C-5391-D7C1-EEFF-20026DA26CD7"/>
 <colUsage columnID="AC62DDCF-FE19-24EE-F53E-8B78E9168238"/>
+<colUsage columnID="6112D459-95A2-32EA-AA9B-6101430F2566"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="D2C159F2-A6A1-4C0B-7476-18603FBA07A8" name="booked_places_bookings_FK">
