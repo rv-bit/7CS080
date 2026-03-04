@@ -3,7 +3,7 @@
 <createdBy>rv</createdBy>
 <createdTime>2026-02-07 16:39:39 UTC</createdTime>
 <ownerDesignName>new_diagram</ownerDesignName>
-<shouldBeOpen>false</shouldBeOpen>
+<shouldBeOpen>true</shouldBeOpen>
 <selectedRDBMSSite>01F6E6D1-21D0-CFBD-ABDD-3988D1813575</selectedRDBMSSite>
 <importDDLFileStamps>
 <importDDLFileStamp class="oracle.dbtools.crest.imports.DDLFileStamp">
@@ -14,6 +14,11 @@
 <importDDLFileStamp class="oracle.dbtools.crest.imports.DDLFileStamp">
 <fileName>init_views.sql</fileName>
 <pathName>/Users/rv/Projects/7CS080</pathName>
+<dbType>17</dbType>
+</importDDLFileStamp>
+<importDDLFileStamp class="oracle.dbtools.crest.imports.DDLFileStamp">
+<fileName>init_views_query.sql</fileName>
+<pathName>/Users/rv/Projects/7CS080/views</pathName>
 <dbType>17</dbType>
 </importDDLFileStamp>
 </importDDLFileStamps>

@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<TableViewProxyOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TableViewProxyOraclev10g" name="v_track_availability_view" directorySegmentName="seg_0" id="4640C92E-2516-87D4-6C06-27E177DDDA65">
+<TableViewProxyOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TableViewProxyOraclev10g" name="v_track_availability_viewv2" directorySegmentName="seg_0" id="4640C92E-2516-87D4-6C06-27E177DDDA65">
 <createdBy>rv</createdBy>
-<createdTime>2026-02-07 16:46:26 UTC</createdTime>
+<createdTime>2026-03-04 22:06:00 UTC</createdTime>
 <ownerDesignName>new_diagram</ownerDesignName>
 </TableViewProxyOraclev10g>

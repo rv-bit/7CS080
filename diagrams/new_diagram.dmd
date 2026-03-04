@@ -5,4 +5,9 @@
 <ownerDesignName>new_diagram</ownerDesignName>
 <capitalNames>false</capitalNames>
 <designId>99E72C3F-D423-83F9-9F53-346EF82E4744</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="CBF10658-395A-39B7-5C68-9D915E121F84">
+<designStoragePath>/init_views_query</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
 </OSDM_Design>
