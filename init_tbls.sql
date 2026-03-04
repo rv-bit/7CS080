@@ -25,6 +25,8 @@ ALTER TABLE `tracks` DROP INDEX `tracks_UN`;
 ALTER TABLE `customers` DROP INDEX `customer_email_UN`;
 
 DROP VIEW IF EXISTS v_track_availability_view;
+DROP VIEW IF EXISTS v_track_slots;
+
 DROP TABLE IF EXISTS booked_places;
 DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS customers;
