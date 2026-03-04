@@ -1,42 +1,38 @@
 SET autocommit = 0; -- Causes for no auto committing in MySQL, shouldn't be used in Oracle
 
--- Checks available for the booking date, if results returned, no booking available
--- SELECT *
--- FROM v_track_availability_view
--- WHERE booking_date = '2026-03-04'
--- ORDER BY track_name, start_time;
+-- INFO  Checks available for the booking date, if results returned, no booking available
 
-SELECT
-    V.track_id,
-    V.track_name,
-    V.time_slots_id,
-    V.start_time,
-    V.end_time,
-    V.max_karts,
-    IFNULL(SUM(BKP.quantity), 0) AS booked_karts,
-    GREATEST(V.max_karts - IFNULL(SUM(BKP.quantity), 0), 0) AS available_karts
-FROM v_track_slots V
-LEFT JOIN booked_places BKP
-    ON BKP.tracks_id = V.track_id
-    AND BKP.time_slots_id = V.time_slots_id
-LEFT JOIN bookings BK
-    ON BK.id = BKP.bookings_id
-    AND BK.booking_date = '2026-03-07'
-    AND BK.status IN ('CONFIRMED', 'PENDING')
-GROUP BY
-    V.track_id,
-    V.track_name,
-    V.time_slots_id,
-    V.start_time,
-    V.end_time,
-    V.max_karts
-ORDER BY
-    V.track_name,
-    V.start_time;
+-- SELECT
+--     V.track_id,
+--     V.track_name,
+--     V.time_slots_id,
+--     V.start_time,
+--     V.end_time,
+--     V.max_karts,
+--     IFNULL(SUM(BKP.quantity), 0) AS booked_karts,
+--     GREATEST(V.max_karts - IFNULL(SUM(BKP.quantity), 0), 0) AS available_karts
+-- FROM v_track_slots V
+-- LEFT JOIN booked_places BKP
+--     ON BKP.tracks_id = V.track_id
+--     AND BKP.time_slots_id = V.time_slots_id
+-- LEFT JOIN bookings BK
+--     ON BK.id = BKP.bookings_id
+--     AND BK.booking_date = '2026-03-07'
+--     AND BK.status IN ('CONFIRMED', 'PENDING')
+-- GROUP BY
+--     V.track_id,
+--     V.track_name,
+--     V.time_slots_id,
+--     V.start_time,
+--     V.end_time,
+--     V.max_karts
+-- ORDER BY
+--     V.track_name,
+--     V.start_time;
 
-SELECT DISTINCT booking_date
-FROM bookings
-ORDER BY booking_date;
+-- SELECT DISTINCT booking_date
+-- FROM bookings
+-- ORDER BY booking_date;
 
 -- INFO Only update the booking if the status is PENDING and is still in reservation process
 
@@ -46,6 +42,20 @@ ORDER BY booking_date;
 -- 		AND reserved_until >= NOW();
 
 -- 	COMMIT;
+
+-- INFO Delete expired booked_places first (child rows must go before parent update to avoid FK constraint violations)
+
+START TRANSACTION;
+    DELETE BKP
+    FROM booked_places BKP
+        JOIN bookings BK ON BK.id = BKP.bookings_id
+    WHERE BK.status = 'PENDING'
+        AND BK.reserved_until < NOW();
+
+    UPDATE bookings BK SET BK.status = 'CANCELLED'
+    WHERE BK.status = 'PENDING' AND BK.reserved_until < NOW();
+
+    COMMIT;
 
 -- INFO: Update Quantity
 
