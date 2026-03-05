@@ -1,6 +1,6 @@
 SET autocommit = 0; -- Causes for no auto committing in MySQL, shouldn't be used in Oracle
 
--- INFO  Checks available for the booking date, if results returned, no booking available
+-- INFO Checks available for the booking date, if results returned, no booking available
 
 -- SELECT
 --     V.track_id,
@@ -38,56 +38,76 @@ SET autocommit = 0; -- Causes for no auto committing in MySQL, shouldn't be used
 
 -- START TRANSACTION;
 -- 	UPDATE bookings BK SET status = 'CONFIRMED' WHERE id = 4 
--- 		AND BK.status IN ('PENDING')
+-- 		AND BK.status = 'PENDING'
 -- 		AND reserved_until >= NOW();
 
--- 	COMMIT;
+-- COMMIT;
+
+
+-- INFO Only update the booking if the status is CONFIRMED and it is past the booking date, meaning it completed the booking
+    -- Also deletes from booked_places, to have kind of a recycle of old data 
+
+-- START TRANSACTION;
+--     DELETE BKP
+--     FROM booked_places BKP
+--         JOIN bookings BK ON BK.id = BKP.bookings_id
+--     WHERE BK.status = 'CONFIRMED'
+--         AND BK.booking_date < DATE(NOW())
+--         AND BK.id = 2;
+
+-- 	UPDATE bookings BK SET status = 'COMPLETED' WHERE id = 2
+-- 		AND BK.status = 'CONFIRMED'
+-- 		AND BK.booking_date < DATE(NOW());
+-- COMMIT;
+
 
 -- INFO Delete expired booked_places first (child rows must go before parent update to avoid FK constraint violations)
 
-START TRANSACTION;
-    DELETE BKP
-    FROM booked_places BKP
-        JOIN bookings BK ON BK.id = BKP.bookings_id
-    WHERE BK.status = 'PENDING'
-        AND BK.reserved_until < NOW();
+-- START TRANSACTION;
+--     DELETE BKP
+--     FROM booked_places BKP
+--         JOIN bookings BK ON BK.id = BKP.bookings_id
+--     WHERE BK.status = 'PENDING'
+--         AND BK.reserved_until < NOW();
 
-    UPDATE bookings BK SET BK.status = 'CANCELLED'
-    WHERE BK.status = 'PENDING' AND BK.reserved_until < NOW();
+--     UPDATE bookings BK SET BK.status = 'CANCELLED'
+--     WHERE BK.status = 'PENDING' AND BK.reserved_until < NOW();
 
-    COMMIT;
+-- COMMIT;
 
 -- INFO: Update Quantity
 
 -- START TRANSACTION;
--- 	SET @booking_Id = 1;
+-- 	SET @booking_Id = 13;
 -- 	SET @new_quantity = 10;
+--     SET @track_id = 6;
 
 -- 	UPDATE booked_places BKP
+--         JOIN bookings BK ON BK.id = BKP.bookings_id
+--         JOIN tracks TRK ON TRK.id = BKP.tracks_id
 
--- 	JOIN bookings BK ON BK.id = BKP.bookings_id
--- 	JOIN tracks TRK ON TRK.id = BKP.tracks_id
-
--- 	LEFT JOIN
--- 	(
--- 		SELECT
--- 			BKP2.tracks_id,
--- 			BKP2.time_slots_id,
--- 			BK2.booking_date,
--- 			SUM(BKP2.quantity) booked
--- 		FROM booked_places BKP2
--- 			JOIN bookings BK2 ON BK2.id = BKP2.bookings_id
--- 		WHERE BK2.status IN ('PENDING', 'CONFIRMED')
--- 			AND BK2.id <> @booking_Id
--- 		GROUP BY BKP2.tracks_id, BKP2.time_slots_id, BK2.booking_date
--- 	) cap ON cap.tracks_id = BKP.tracks_id
--- 		AND cap.time_slots_id = BKP.time_slots_id
--- 	    AND cap.booking_date = BK.booking_date
+--         LEFT JOIN
+--         (
+--             SELECT
+--                 BKP2.tracks_id,
+--                 BKP2.time_slots_id,
+--                 BK2.booking_date,
+--                 SUM(BKP2.quantity) booked
+--             FROM booked_places BKP2
+--                 JOIN bookings BK2 ON BK2.id = BKP2.bookings_id
+--             WHERE BK2.status IN ('PENDING', 'CONFIRMED')
+--                 AND BK2.id <> @booking_Id
+--                 AND BKP2.tracks_id = @track_id
+--             GROUP BY BKP2.tracks_id, BKP2.time_slots_id, BK2.booking_date
+--         ) used_capacity ON used_capacity.tracks_id = BKP.tracks_id
+--             AND used_capacity.time_slots_id = BKP.time_slots_id
+--             AND used_capacity.booking_date = BK.booking_date
 
 -- 	SET BKP.quantity = @new_quantity
 
 -- 	WHERE BKP.bookings_id = @booking_Id
--- 		AND BK.status IN ('PENDING')
--- 		AND (TRK.max_karts - IFNULL(cap.booked, 0)) >= @new_quantity;
+-- 		AND BK.status IN ('PENDING', 'CONFIRMED')
+--         AND BKP.tracks_id = @track_id
+-- 		AND (TRK.max_karts - IFNULL(used_capacity.booked, 0)) >= @new_quantity;
 
--- 	COMMIT;
+-- COMMIT;
