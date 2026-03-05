@@ -8,31 +8,32 @@ SET autocommit = 0; -- Causes for no auto committing in MySQL, shouldn't be used
 --     V.time_slots_id,
 --     V.start_time,
 --     V.end_time,
---     V.max_karts,
---     IFNULL(SUM(BKP.quantity), 0) AS booked_karts,
---     GREATEST(V.max_karts - IFNULL(SUM(BKP.quantity), 0), 0) AS available_karts
+--     V.max_karts AS MaxKartsPerBooking,
+--     AGG.booking_date,
+--     IFNULL(AGG.booked_karts, 0) AS booked_karts,
+--     GREATEST(V.max_karts - IFNULL(AGG.booked_karts, 0), 0) AS available_karts
 -- FROM v_track_slots V
--- LEFT JOIN booked_places BKP
---     ON BKP.tracks_id = V.track_id
---     AND BKP.time_slots_id = V.time_slots_id
--- LEFT JOIN bookings BK
---     ON BK.id = BKP.bookings_id
---     AND BK.booking_date = '2026-03-07'
---     AND BK.status IN ('CONFIRMED', 'PENDING')
--- GROUP BY
---     V.track_id,
---     V.track_name,
---     V.time_slots_id,
---     V.start_time,
---     V.end_time,
---     V.max_karts
+--     LEFT JOIN (
+--         SELECT
+--             BKP.tracks_id,
+--             BKP.time_slots_id,
+--             BK.booking_date,
+--             SUM(BKP.quantity) AS booked_karts
+--         FROM booked_places BKP
+--         INNER JOIN bookings BK
+--             ON BK.id = BKP.bookings_id
+--             AND BK.booking_date IN ('2026-03-10', '2026-03-12', '2026-03-13')
+--             AND BK.status IN ('CONFIRMED', 'PENDING')
+--         GROUP BY
+--             BKP.tracks_id,
+--             BKP.time_slots_id,
+--             BK.booking_date
+--     ) AGG
+--         ON AGG.tracks_id = V.track_id
+--         AND AGG.time_slots_id = V.time_slots_id
 -- ORDER BY
---     V.track_name,
+--     V.track_id,
 --     V.start_time;
-
--- SELECT DISTINCT booking_date
--- FROM bookings
--- ORDER BY booking_date;
 
 -- INFO Only update the booking if the status is PENDING and is still in reservation process
 
