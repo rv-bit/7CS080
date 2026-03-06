@@ -9,7 +9,7 @@
 START TRANSACTION;
 	-- Setting some default, these would have to come from an actual application, 	
     SET @customer_id = 3;
-    SET @booking_date = '2026-03-12';
+    SET @booking_date = '2026-03-13';
     SET @reserved_until = DATE_ADD(SYSDATE(), INTERVAL 10 MINUTE);
 
     -- This would be a count of record which can be counted within the application layer and sent as params
@@ -24,9 +24,9 @@ START TRANSACTION;
     -- Creates a CTE https://dev.mysql.com/doc/refman/8.4/en/with.html , sub queries where validation can happen with all data
     -- The 'booking_requests' will serve as the main table / result set of the tracks, time slots and quantity selected within the booking session
     WITH booking_requests AS (
-        SELECT 5 AS track_id, 1 AS slot_id, 5 AS quantity
+        SELECT 1 AS track_id, 1 AS slot_id, 5 AS quantity
         UNION ALL
-        SELECT 6 AS track_id, 2 AS slot_id, 3 AS quantity 
+        SELECT 1 AS track_id, 2 AS slot_id, 3 AS quantity 
     ),
     used_capacity AS (
         -- Checks the currently used capacity based on the already booked_place for the same booking_date where either CONFIRMED or PENDING
@@ -62,12 +62,11 @@ START TRANSACTION;
         -- Checks if there is currently a booking already created, with the same date, time slot and grabs the customer id
 		    -- if yes we will block the insert of the same rows again, we also have a UNIQUE constraint just in case
         SELECT COUNT(*) AS already_created_booking
-        FROM booking_requests BR
-            JOIN booked_places BKP ON BKP.tracks_id = BR.track_id AND BKP.time_slots_id = BR.slot_id
-            JOIN bookings BK ON BK.id = BKP.bookings_id
-                AND BK.customers_id = @customer_id
-                AND BK.booking_date = @booking_date
-                AND BK.status IN ('CONFIRMED', 'PENDING')
+        FROM bookings BK
+        WHERE BK.customers_id = @customer_id
+            AND BK.booking_date = @booking_date
+            AND BK.status IN ('CONFIRMED', 'PENDING')
+            AND BK.reserved_until > NOW()
     )
 
     -- Pretty self explanatory, it selects from the 2 sub queries the data and sets it into variables
@@ -80,6 +79,8 @@ START TRANSACTION;
 
     -- If the @valid_count != @request_count then this would fail and automatically it will stop the insertion of booked_places
     -- Makes sure that if one from list is not valid, it will automatically fail due to logical condition
+
+    SET @booking_id = 0;
 
     -- Only insert if enough capacity
 	-- Use DUAL as given there is no reference to table, we can use methods from Oracle https://stackoverflow.com/a/33378903
@@ -97,9 +98,9 @@ START TRANSACTION;
         -- If the user has multiple tracks within the same booking session, it will add all at once
     INSERT INTO booked_places (bookings_id, tracks_id, time_slots_id, quantity)
     WITH booking_requests AS (
-        SELECT 5 AS track_id, 1 AS slot_id, 5 AS quantity
+        SELECT 1 AS track_id, 1 AS slot_id, 5 AS quantity
         UNION ALL
-        SELECT 6 AS track_id, 2 AS slot_id, 3 AS quantity
+        SELECT 1 AS track_id, 2 AS slot_id, 3 AS quantity
     )
     SELECT @booking_id, BR.track_id, BR.slot_id, BR.quantity
     FROM booking_requests BR
