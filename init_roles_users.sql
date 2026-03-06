@@ -12,8 +12,10 @@ CREATE USER IF NOT EXISTS 'dev_user'@'%' IDENTIFIED BY 'DevPass123!';
 CREATE ROLE IF NOT EXISTS 'admin';
 CREATE ROLE IF NOT EXISTS 'developer';
 
-GRANT USAGE, SELECT, INSERT ON 7CS080.* TO 'admin';
+GRANT USAGE, SELECT ON 7CS080.* TO 'admin';
 GRANT ALL PRIVILEGES ON 7CS080.* TO 'developer';
+
+GRANT INSERT ON 7CS080.time_slots, 7CS080.bookings, 7CS080.booked_places TO 'admin'
 
 FLUSH PRIVILEGES;
 
@@ -23,3 +25,5 @@ GRANT 'developer' TO 'dev_user'@'%';
 
 SET DEFAULT ROLE admin TO 'admin_user'@'%';
 SET DEFAULT ROLE developer TO 'dev_user'@'%';
+
+-- REVOKE INSERT ON 77CS080.time_slots, 7CS080.bookings, 7CS080.booked_places FROM 'admin'
