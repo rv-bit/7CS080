@@ -1,18 +1,25 @@
-CREATE OR REPLACE VIEW v_track_availability_view ( track_id, track_name, max_karts, booking_date, time_slots_id, start_time, end_time, booked_karts, available_karts) AS
+CREATE OR REPLACE VIEW v_track_availability_view ( 
+    track_id, 
+    track_name, 
+    time_slots_id, 
+    start_time, 
+    end_time, 
+    max_karts, 
+    booking_date, 
+    booked_karts,
+    available_karts
+) AS
     SELECT
-        TRK.id AS track_id,
-        TRK.name AS track_name,
-        TRK.max_karts,
-        CAPTR.booking_date,
-        TS.id AS time_slots_id,
-        TS.start_time,
-        TS.end_time,
-        COALESCE(CAPTR.booked_karts, 0) AS booked_karts,
-        GREATEST(TRK.max_karts - COALESCE(CAPTR.booked_karts, 0), 0) AS available_karts
-    FROM tracks TRK
-        JOIN track_schedules SCH ON SCH.tracks_id = TRK.id AND SCH.is_open = 1
-        JOIN time_slots TS ON TS.id = SCH.time_slots_id
-
+        V.track_id AS track_id,
+        V.track_name AS track_name,
+        V.time_slots_id,
+        V.start_time,
+        V.end_time,
+        V.max_karts AS MaxKartsPerBooking,
+        AGG.booking_date,
+        IFNULL(AGG.booked_karts, 0) AS booked_karts,
+        GREATEST(V.max_karts - IFNULL(AGG.booked_karts, 0), 0) AS available_karts
+    FROM v_track_slots V
         LEFT JOIN (
             SELECT
                 BKP.tracks_id,
@@ -20,15 +27,19 @@ CREATE OR REPLACE VIEW v_track_availability_view ( track_id, track_name, max_kar
                 BK.booking_date,
                 SUM(BKP.quantity) AS booked_karts
             FROM booked_places BKP
-                JOIN bookings BK ON BK.id = BKP.bookings_id
-            WHERE BK.status IN ('CONFIRMED', 'PENDING')
+            INNER JOIN bookings BK
+                ON BK.id = BKP.bookings_id
+                AND BK.status IN ('CONFIRMED', 'PENDING')
             GROUP BY
                 BKP.tracks_id,
                 BKP.time_slots_id,
                 BK.booking_date
-        ) CAPTR ON CAPTR.tracks_id = TRK.id AND CAPTR.time_slots_id = TS.id
-
-    WHERE TRK.is_active = 1;
+        ) AGG
+            ON AGG.tracks_id = V.track_id
+            AND AGG.time_slots_id = V.time_slots_id
+    ORDER BY
+        V.track_id,
+        V.start_time;
 
 CREATE OR REPLACE VIEW v_track_slots AS
 SELECT

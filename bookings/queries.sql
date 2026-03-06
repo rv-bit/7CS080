@@ -2,38 +2,10 @@ SET autocommit = 0; -- Causes for no auto committing in MySQL, shouldn't be used
 
 -- INFO Checks available for the booking date, if results returned, no booking available
 
--- SELECT
---     V.track_id,
---     V.track_name,
---     V.time_slots_id,
---     V.start_time,
---     V.end_time,
---     V.max_karts AS MaxKartsPerBooking,
---     AGG.booking_date,
---     IFNULL(AGG.booked_karts, 0) AS booked_karts,
---     GREATEST(V.max_karts - IFNULL(AGG.booked_karts, 0), 0) AS available_karts
--- FROM v_track_slots V
---     LEFT JOIN (
---         SELECT
---             BKP.tracks_id,
---             BKP.time_slots_id,
---             BK.booking_date,
---             SUM(BKP.quantity) AS booked_karts
---         FROM booked_places BKP
---         INNER JOIN bookings BK
---             ON BK.id = BKP.bookings_id
---             AND BK.booking_date IN ('2026-03-10', '2026-03-12', '2026-03-13')
---             AND BK.status IN ('CONFIRMED', 'PENDING')
---         GROUP BY
---             BKP.tracks_id,
---             BKP.time_slots_id,
---             BK.booking_date
---     ) AGG
---         ON AGG.tracks_id = V.track_id
---         AND AGG.time_slots_id = V.time_slots_id
--- ORDER BY
---     V.track_id,
---     V.start_time;
+SELECT
+    *
+FROM v_track_availability_view V
+WHERE V.booking_date IN ('2026-03-10', '2026-03-12', '2026-03-13')
 
 -- INFO Only update the booking if the status is PENDING and is still in reservation process
 
