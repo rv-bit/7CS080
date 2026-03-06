@@ -1,6 +1,9 @@
 DROP USER IF EXISTS 'admin_user'@'%';
 DROP ROLE IF EXISTS 'admin';
 
+DROP USER IF EXISTS 'dev_user'@'%';
+DROP ROLE IF EXISTS 'developer';
+
 -- create users with passwords
 CREATE USER IF NOT EXISTS 'admin_user'@'%' IDENTIFIED BY 'AdminPass123!';
 CREATE USER IF NOT EXISTS 'dev_user'@'%' IDENTIFIED BY 'DevPass123!';
@@ -9,7 +12,7 @@ CREATE USER IF NOT EXISTS 'dev_user'@'%' IDENTIFIED BY 'DevPass123!';
 CREATE ROLE IF NOT EXISTS 'admin';
 CREATE ROLE IF NOT EXISTS 'developer';
 
-GRANT USAGE, SELECT ON 7CS080.* TO 'admin';
+GRANT USAGE, SELECT, INSERT ON 7CS080.* TO 'admin';
 GRANT ALL PRIVILEGES ON 7CS080.* TO 'developer';
 
 FLUSH PRIVILEGES;
