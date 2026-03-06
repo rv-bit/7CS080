@@ -2,10 +2,9 @@ SET autocommit = 0; -- Causes for no auto committing in MySQL, shouldn't be used
 
 -- INFO Checks available for the booking date, if results returned, no booking available
 
-SELECT
-    *
-FROM v_track_availability_view V
-WHERE V.booking_date IN ('2026-03-10', '2026-03-12', '2026-03-13')
+-- SELECT *
+-- FROM v_track_availability_view V
+-- WHERE V.booking_date IN ('2026-03-10', '2026-03-12', '2026-03-13')
 
 -- INFO Only update the booking if the status is PENDING and is still in reservation process
 
@@ -50,37 +49,40 @@ WHERE V.booking_date IN ('2026-03-10', '2026-03-12', '2026-03-13')
 
 -- INFO: Update Quantity
 
--- START TRANSACTION;
--- 	SET @booking_Id = 13;
--- 	SET @new_quantity = 10;
---     SET @track_id = 6;
+START TRANSACTION;
+	SET @booking_Id = 1;
+	SET @new_quantity = 3;
+    SET @track_id = 1;
+    SET @time_slot_id = 2;
 
--- 	UPDATE booked_places BKP
---         JOIN bookings BK ON BK.id = BKP.bookings_id
---         JOIN tracks TRK ON TRK.id = BKP.tracks_id
+	UPDATE booked_places BKP
+        JOIN bookings BK ON BK.id = BKP.bookings_id
+        JOIN tracks TRK ON TRK.id = BKP.tracks_id
 
---         LEFT JOIN
---         (
---             SELECT
---                 BKP2.tracks_id,
---                 BKP2.time_slots_id,
---                 BK2.booking_date,
---                 SUM(BKP2.quantity) booked
---             FROM booked_places BKP2
---                 JOIN bookings BK2 ON BK2.id = BKP2.bookings_id
---             WHERE BK2.status IN ('PENDING', 'CONFIRMED')
---                 AND BK2.id <> @booking_Id
---                 AND BKP2.tracks_id = @track_id
---             GROUP BY BKP2.tracks_id, BKP2.time_slots_id, BK2.booking_date
---         ) used_capacity ON used_capacity.tracks_id = BKP.tracks_id
---             AND used_capacity.time_slots_id = BKP.time_slots_id
---             AND used_capacity.booking_date = BK.booking_date
+        LEFT JOIN
+        (
+            SELECT
+                BKP2.tracks_id,
+                BKP2.time_slots_id,
+                BK2.booking_date,
+                SUM(BKP2.quantity) booked
+            FROM booked_places BKP2
+                JOIN bookings BK2 ON BK2.id = BKP2.bookings_id
+            WHERE BK2.status IN ('PENDING', 'CONFIRMED')
+                AND BK2.id <> @booking_Id
+                AND BKP2.tracks_id = @track_id
+                AND BKP2.time_slots_id = @time_slot_id
+            GROUP BY BKP2.tracks_id, BKP2.time_slots_id, BK2.booking_date
+        ) used_capacity ON used_capacity.tracks_id = BKP.tracks_id
+            AND used_capacity.time_slots_id = BKP.time_slots_id
+            AND used_capacity.booking_date = BK.booking_date
 
--- 	SET BKP.quantity = @new_quantity
+	SET BKP.quantity = @new_quantity
 
--- 	WHERE BKP.bookings_id = @booking_Id
--- 		AND BK.status IN ('PENDING', 'CONFIRMED')
---         AND BKP.tracks_id = @track_id
--- 		AND (TRK.max_karts - IFNULL(used_capacity.booked, 0)) >= @new_quantity;
+	WHERE BKP.bookings_id = @booking_Id
+		AND BK.status IN ('PENDING', 'CONFIRMED')
+        AND BKP.tracks_id = @track_id
+        AND BKP.time_slots_id = @time_slot_id
+		AND (TRK.max_karts - IFNULL(used_capacity.booked, 0)) >= @new_quantity;
 
--- COMMIT;
+COMMIT;
