@@ -2,19 +2,15 @@ SET autocommit = 0; -- Causes for no auto committing in MySQL, shouldn't be used
 
 -- Simple update where id is 3, and commit changes
 -- If id not found, rollbacks / raises error instantly
--- START TRANSACTION;
--- 	UPDATE tracks SET is_active = false, updated_at = CURRENT_TIMESTAMP
--- 	WHERE id = 2;
--- 	COMMIT;
-
--- 	-- We are getting the latest only change
--- 	SELECT * FROM tracks 
--- 	ORDER BY 1 ASC;
+START TRANSACTION;
+	UPDATE tracks SET is_active = false, updated_at = CURRENT_TIMESTAMP
+	WHERE id = 2;
+	COMMIT;
 
 -- -- Simple delete where id is 3, and commit changes
--- START TRANSACTION;
--- 	DELETE FROM tracks WHERE id = 3;
--- 	COMMIT;
+START TRANSACTION;
+	DELETE FROM tracks WHERE id = 3;
+	COMMIT;
 
 -- Info Inserts track_blocks - this would be used for admins / business to block specific track and give a reason on why
 -- 	This will also get blocked when trying to book
